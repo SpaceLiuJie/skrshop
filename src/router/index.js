@@ -11,11 +11,17 @@ const routes = [{
   name: 'Home',
   component: () => import('../views/home/index.vue'),
 },{
-  path: '/search',
+  path: '/search/:searItem',
   name: 'Search',
   component: () => import('@/views/search/index.vue'),
  
-}]
+},{
+  path: '/twolevl/:twolevlDetail',
+  name: 'Search',
+  component: () => import('@/views/home/twolevl.vue'),
+ 
+}
+]
 
 const router = new VueRouter({
   routes,

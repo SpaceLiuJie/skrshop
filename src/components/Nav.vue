@@ -7,10 +7,10 @@
                     alt="">
             </div>
             <div class="ipt">
-                <input type="text" placeholder="潮流,从搜索开始">
-                <button>搜索</button>
+                <input type="text" placeholder="潮流,从搜索开始" v-model="search_content">
+                <button @click="search">搜索</button>
             </div>
-            <div>
+            <div class="navBag">
                 <div class="registerDiv">
                     <span class="register">注册</span>
                 </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="twofiyList" @mouseleave="empty">
                         <ul class="twoSortDiv">
-                            <li v-for="twoSort in twoLinked_Data" :key="twoSort">{{twoSort}}</li>
+                            <li class="twoSort_hover" v-for="twoSort in twoLinked_Data" :key="twoSort" @click="twolevl(twoSort)">{{twoSort}}</li>
                         </ul>
                     </div>
                 </div>
@@ -58,6 +58,7 @@
                 </div>
             </div>
         </div>
+      
     </div>
 </template>
 <script>
@@ -72,6 +73,7 @@ export default {
             twofiyList: [], //二级分类
             twoLinked_Data: [], // 一级导航点击关联数据
             count: 0, // 为1时清空 twoLinked_Data
+            search_content:'',//搜索内容
         }
     },
     methods: {
@@ -131,7 +133,17 @@ export default {
         },
         empty(){
             this.twoLinked_Data = []; //清空数组
+        },
+        twolevl(twoSort_name){
+            this.$router.push(`/twolevl/${twoSort_name}`)
+        },
+        search(){
+            let searItem = this.search_content;
+            console.log('---',searItem);
+            this.$router.push(`/search/${searItem}`);
+            this.search_content = '';
         }
+        
     },
     mounted() {
         console.log('123');
@@ -153,10 +165,14 @@ export default {
 
 .TitleBag {
     width: 100%;
+    min-width:1270px;
 }
 
 .nav {
-    width: 1670px;
+    /* width: 1670px; */
+    /* width: 100%; */
+    max-width: 1670px;
+    min-width: 1260px;
     margin: 0 auto;
     height: 60px;
     /* border: 1px solid #333; */
@@ -167,7 +183,6 @@ export default {
     height: 65px;
     float: left;
     clear: both;
-    margin-top: -10px;
 }
 
 .nav .nacs>img {
@@ -203,15 +218,15 @@ export default {
 }
 
 .nav .registerDiv {
-    float: left;
-    margin-left: 350px;
+    /* float: left; */
+    /* margin-left: 350px; */
     cursor: pointer;
     line-height: 60px;
     margin-top: 10px;
 }
 
 .nav .loginDiv {
-    float: left;
+    /* float: left; */
     margin-left: 15px;
     line-height: 60px;
     cursor: pointer;
@@ -219,7 +234,7 @@ export default {
 }
 
 .nav .shopCarDiv {
-    float: left;
+    /* float: left; */
     margin-left: 15px;
     line-height: 60px;
     cursor: pointer;
@@ -233,6 +248,7 @@ export default {
     height: 60px;
     color: #fff;
     margin: 0 auto;
+    position: relative;
 }
 
 .contentNav .nacs>img {
@@ -248,6 +264,9 @@ export default {
     margin-left: 50px;
     font-weight: 900;
 }
+.contentNav .PopDiv:hover {
+    color: greenyellow;
+}
 
 .contentNav .exclusiveDiv {
     float: left;
@@ -255,6 +274,9 @@ export default {
     margin-left: 30px;
     font-weight: 900;
 
+}
+.contentNav .exclusiveDiv:hover{
+    color: greenyellow;
 }
 
 .contentNav .eeventDiv {
@@ -264,12 +286,18 @@ export default {
     font-weight: 900;
 
 }
+.contentNav .eeventDiv:hover{
+    color: greenyellow;
+}
 
 .contentNav .bestDiv {
     float: left;
     line-height: 55px;
     margin-left: 30px;
     font-weight: 900;
+}
+.contentNav .bestDiv:hover{
+    color: greenyellow;
 }
 
 .fix-nav {
@@ -287,6 +315,7 @@ export default {
     line-height: 55px;
     margin-left: 30px;
     font-weight: 900;
+    
 }
 
 .contentNav .classfiyAddFoot_item:hover {
@@ -295,12 +324,20 @@ export default {
 
 .contentNav_right .registerDiv {
     float: left;
-    margin-left: 350px;
+    margin-left: 280px;
     cursor: pointer;
     margin-top: 10px;
     /* clear: both; */
 }
-
+.contentNav_right .registerDiv>span:hover {
+   color: greenyellow;
+}
+.contentNav_right .loginDiv>span:hover {
+   color: greenyellow;
+}
+.contentNav_right .shopCarDiv>span:hover {
+   color: greenyellow;
+}
 .contentNav_right .loginDiv {
     float: left;
     margin-left: 15px;
@@ -319,28 +356,43 @@ export default {
     /* justify-content: center; */
     margin-left: 375px;
     /* margin: 0 auto; */
-    clear: both;
+    /* clear: both; */
     position: relative;
+    background-color: #fff;
+    z-index: 9;
 }
 
 .navtion {
     width: 100%;
     background-color: black;
+    clear: both;
+    color:chocolate;
 }
 .twofiyList{
     position: absolute;
-    width: 500px;
+    width: 100%;
     margin-top: 60px;
+    background-color: #fff;
+    
 }
 .twofiyList .twoSortDiv{
     display: flex;
-    /* justify-content: space-around; */
     flex-wrap:wrap;
     color: black;
+    width: 500px;
 }
 .twofiyList .twoSortDiv>li{
    width: 130px;
    line-height: 20px;
    margin: 5px 10px
+}
+.twoSort_hover:hover{
+    color: greenyellow;
+}
+.navBag{
+    display: flex;
+    width: 25%;
+    justify-content: center;
+    float: right;
 }
 </style>>
