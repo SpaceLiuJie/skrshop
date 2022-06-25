@@ -37,8 +37,8 @@ const typeOne = [
 const typeTwo = [
     ["我的♡物品", "我的♡品牌", "我的♡风格"],
     ["订购/配送查询", "取消/交换/退货查询", "收到的礼品盒", "签发凭证"],
-    ["进货通知", "活动参与明细", "WDNA参与明细"],
-    ["会员等级", "优惠券", "W POINT", "预收款", "购物券"],
+    ["进货通知", "活动参与明细"],
+    ["会员等级", "优惠券", "预收款", "购物券"],
     ["修改会员信息", "管理地址簿", "W.工资管理", "退款账户管理", "会员退出"],
     ["商品Q&A", "商品评价", "1:1查询"],
 ];
@@ -49,7 +49,7 @@ export default {
             typeOne,
             typeTwo,
             isShow: true,
-            btnShow: true
+            btnShow: true,
         };
     },
     methods: {
@@ -57,6 +57,7 @@ export default {
             this.isShow = !this.isShow;
             this.btnShow = !this.btnShow
         },
+
     },
 };
 </script>

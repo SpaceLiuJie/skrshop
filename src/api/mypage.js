@@ -29,3 +29,37 @@ export async function updatePassword(options) {
         url: '/user/changePassword',
     })
 }
+
+// 获取优惠券
+export async function getVoucher(data) {
+    return await http({
+        method: "post",
+        url: "/voucher/getVoucher",
+        data: {
+            ...data
+        }
+    })
+}
+
+
+// 删除优惠券
+export async function deletVoucher(data) {
+    return await http({
+        method: "post",
+        url: "/voucher/deleteVoucher",
+        data: {
+            ...data
+        }
+    })
+}
+
+// 获取地址
+export async function getAddress(data) {
+    return await http({
+        method: "post",
+        url: "/user/deleteAddress",
+        data: {
+            ...data
+        }
+    })
+}

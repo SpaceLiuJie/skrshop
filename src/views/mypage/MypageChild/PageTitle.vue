@@ -1,6 +1,9 @@
 <template>
     <div class="pagetitle">
-        <h1 class="title">个人中心</h1>
+        <div id="title">
+            <h1 class="title">个人中心</h1>
+        </div>
+        <span class="main" @click="goHome">去主页</span>
         <div class="PersonalDetails">
             <el-form :label-position="labelPosition" label-width="70px" :model="formLabelAlign">
                 <el-form-item label="昵称：">
@@ -39,6 +42,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push("/coupon")
+            console.log('去home');
+        }
     }
 };
 </script>
@@ -49,11 +56,23 @@ export default {
     margin: 0 auto;
 }
 
+#title {
+    width: 25%;
+    margin: 0 auto;
+}
+
 .title {
     font-size: 44px;
-    margin: 10px auto;
+    text-align: center;
     color: rgba(0, 0, 0, 0.85);
     font-weight: 500;
+}
+
+.main {
+    cursor: pointer;
+    width: 44px;
+    text-align: center;
+    font-weight: bolder;
 }
 
 .PersonalDetails {

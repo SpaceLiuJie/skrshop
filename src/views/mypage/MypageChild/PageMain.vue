@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="indentblurb">
-                <el-table class="el-table" :data="tableData" stripe style="width: 100%">
+                <el-table class="el-table" :data="tableDate" stripe style="width: 100%">
                     <el-table-column prop="name" label="收货人姓名" width="200">
                     </el-table-column>
                     <el-table-column prop="orderid" label="收货人地址" width="600">
@@ -59,31 +59,28 @@
 </template>
 
 <script>
+import { getAddress } from '../../../api/mypage.js'
 export default {
     name: 'PageMain',
     data() {
         return {
             tableData: [],
+            tableDate: [],
         }
     },
     methods: {
         deleindent() {
-            this.$confirm('此操作将永久删除该订单, 是否继续?', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                type: 'warning'
-            }).then(() => {
-                this.$message({
-                    type: 'success',
-                    message: '删除成功!'
-                });
-            }).catch(() => {
-                this.$message({
-                    type: 'info',
-                    message: '已取消删除'
-                });
-            });
-        }
+
+        },
+        getAddress() {
+            let data = {
+                id: 62,
+            }
+            getAddress(data).then((data) => {
+                console.log(data);
+                this.tableDate = data.data;
+            })
+        },
     },
     created() {
 

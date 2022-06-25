@@ -1,7 +1,10 @@
 <template>
     <div class="mypage">
+        <!-- 个人中心大标题 -->
         <PageTitle />
+        <!--  -->
         <PageSnb />
+        <!-- 订单地址部分 -->
         <PageMain />
     </div>
 </template>
