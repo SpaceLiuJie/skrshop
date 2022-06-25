@@ -15,7 +15,11 @@ const routes = [{
   name: 'Search',
   component: () => import('@/views/search/index.vue'),
  
-}]
+}, {
+  path: '/login',
+  name: 'Login',
+  component: () => import('../views/login/index.vue'),
+},]
 
 const router = new VueRouter({
   routes,
