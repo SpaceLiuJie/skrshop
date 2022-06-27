@@ -7,7 +7,12 @@
       </h3>
       <div class="shopcar-top">
         <label class="checkbox-label checkbox-all">
-          <input type="checkbox" class="checkbox-input" />
+          <input
+            type="checkbox"
+            v-model="isAll"
+            @change="changeAll"
+            class="checkbox-input"
+          />
           <span>全选</span>
         </label>
       </div>
@@ -15,7 +20,12 @@
         <li class="car-item" v-for="(item, index) in shopCar" :key="index">
           <div class="checkbox-item">
             <label class="checkbox-label checkbox-one">
-              <input type="checkbox" class="checkbox-input" />
+              <input
+                type="checkbox"
+                :value="item"
+                v-model="checkeds"
+                class="checkbox-input"
+              />
             </label>
           </div>
           <div class="showImg">
@@ -35,19 +45,18 @@
               <div class="fr">
                 <div class="info-price">￥ {{ item.price }}</div>
                 <div class="under-info-price">￥ {{ item.special_price }}</div>
-                <a class="delete-one">删除</a>
+                <a class="delete-one" @click="deleteShopCar(item)">删除</a>
               </div>
             </div>
             <div class="info-bom">
-              <p class="fl">
+              <div class="fl">
                 <span>数量 :</span>
-                <el-input-number
-                  v-model="num"
-                  :min="1"
-                  :max="10"
-                  label="d"
-                ></el-input-number>
-              </p>
+                <div class="num">
+                  <button @click="removeShopCar(item)">-</button>
+                  <input type="text" :value="item.num" disabled />
+                  <button @click="add(item)">+</button>
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -65,7 +74,7 @@
           </div>
         </div>
         <div class="car-pay">
-          <a>结算</a>
+          <a @click="payTotal">结算</a>
         </div>
       </div>
     </div>
@@ -73,35 +82,136 @@
 </template>
 
 <script>
-import a from "@/assets/images/logo.png";
-import getShopCar from '@/api/shopcar.js'
+// import a from "@/assets/images/logo.png";
+import { getShopCar, deleteShopCar, addShopCar } from "@/api/shopcar.js";
 export default {
   name: "ShopCar",
   data() {
     return {
-      num: 1,
-      shopCar: [
-        {
-          title: "安踏",
-          img: a,
-          params: ["黑色", "xl"],
-          price: "222",
-          special_price: "221",
-        },
-      ],
-      totalPrice: "2",
+      // 多选数组
+      checkeds: [],
+      flag: true,
+      shopCar: [],
+      totalPrice: 0,
+      isAll: false, // 是否全选
     };
   },
   methods: {
-    getShopCar(){
-      // let Id = 1;
-      // getShopCar(Id).then(data=>{
-      //   this.shopCar = data;
-      // })
+    // 跳转结算页面
+    payTotal(){
+      this.$router.push('/payTotal')
+    },
+    getShopCar() {
+      // Id用户得id
+      let data = {
+        customer_id: 1,
+      };
+
+      getShopCar(data).then((data) => {
+        // console.log(data);
+        // if(data.length<=0){
+        //   console.log('购物车为空');
+        //   return;
+        // }else{
+        //  let b = data.data.map((item) => {
+        console.log(data);
+        if (data.code == 402) {
+          return;
+        } else {
+          for (let i = 0; i < data.data.length; i++) {
+            if (data.data.length <= 0) {
+              break;
+            } else {
+              data.data[i].params = JSON.parse(data.data[i].params);
+              console.log(data.data);
+              break;
+            }
+          }
+          console.log(data.data);
+          this.shopCar = data.data;
+        }
+      });
+    },
+
+    // 减一
+    removeShopCar(item) {
+      // console.log(item);
+      var items = item;
+      if (item.num <= 1) {
+        return;
+      } else {
+        items.num--;
+
+        let datas = {
+          id: item.id,
+        };
+        deleteShopCar(datas);
+        addShopCar(items).then((data) => {
+          item = data;
+        this.getShopCar();
+
+        });
+      }
+    },
+    // 加一
+    add(item) {
+      console.log(item);
+      var items = item;
+      items.num++;
+
+      console.log(item);
+
+      //  item.params = JSON.parse(item.params)
+
+      let datas = {
+        id: item.id,
+      };
+      deleteShopCar(datas);
+      addShopCar(items).then((data) => {
+        item = data;
+        this.getShopCar();
+      });
+      console.log(item);
+    },
+    // 删除
+    deleteShopCar(item) {
+      let data = {
+        id: item.id,
+      };
+      deleteShopCar(data).then((data) => {
+        console.log("删除成功");
+        this.getShopCar();
+      });
+    },
+    changeAll() {
+      if (this.isAll) {
+        this.checkeds = this.shopCar;
+      } else {
+        this.checkeds = [];
+      }
     },
   },
   created() {
-    this.getShopCar()
+    this.getShopCar();
+  },
+  watch: {
+    checkeds: {
+      deep: true, // 对象数组,深度监听
+      handler(val) {
+        let res = 0;
+        // 求总价钱
+        val.forEach((item) => {
+          res += item.num * item.price;
+        });
+        this.totalPrice = res;
+        // 根据用户选中列表项,判断选否需要选中全选.
+        if (val.length === this.shopCar.length) {
+          this.isAll = true;
+        } else {
+          this.isAll = false;
+        }
+      },
+    },
   },
 };
 </script>
@@ -156,7 +266,7 @@ export default {
     }
   }
 }
-.info-name{
+.info-name {
   font-size: 22px;
   font-weight: 800;
 }
@@ -231,8 +341,19 @@ export default {
           span {
             margin-right: 20px;
           }
-          .el-input-number {
-            border: 1px solid #000;
+          .num {
+            button {
+              cursor: pointer;
+              width: 32px;
+              height: 26px;
+              background-color: #fff;
+              border: 1px solid rgb(196, 187, 187);
+            }
+            input {
+              width: 78px;
+              height: 22px;
+              text-align: center;
+            }
           }
         }
         .fr {
@@ -270,16 +391,15 @@ export default {
       line-height: 40px;
       margin-right: 25px;
       font-size: 13px;
-       .total-price {
-          display: inline-block;
-          line-height: 30px;
-          font-size: 22px;
-        }
+      .total-price {
+        display: inline-block;
+        line-height: 30px;
+        font-size: 22px;
+      }
       span {
         display: block;
         line-height: 10px;
         font-size: 12px;
-       
       }
     }
   }

@@ -22,6 +22,12 @@ const routes = [{
   component: () => import('@/views/shopCar/index.vue'),
  
 },
+{
+  path: '/payTotal',
+  name: 'payTotal',
+  component: () => import('@/views/paytotal/index.vue'),
+ 
+},
 ]
 
 const router = new VueRouter({
