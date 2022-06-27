@@ -1,7 +1,11 @@
 <template>
     <div class="pagetitle">
         <div id="title">
+<<<<<<< HEAD
             <span class="title">个人中心</span>
+=======
+            <h1 class="title">个人中心</h1>
+>>>>>>> 43cf76b1918c1b29de4be482ce67f858847357c4
         </div>
         <span class="main" @click="goHome">去主页</span>
         <div class="PersonalDetails">
@@ -57,7 +61,11 @@ export default {
 }
 
 #title {
+<<<<<<< HEAD
     width: 20%;
+=======
+    width: 25%;
+>>>>>>> 43cf76b1918c1b29de4be482ce67f858847357c4
     margin: 0 auto;
 }
 
