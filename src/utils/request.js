@@ -28,6 +28,7 @@ instance.interceptors.request.use((config) => {
     //     spinner: 'el-icon-loading',
     //     background: 'rgba(0, 0, 0, 0.7)',
     // })
+
     // 第二种
     loadServe = Loading.service({
         lock: true,
@@ -55,12 +56,10 @@ instance.interceptors.response.use(config => {
             // 关闭loading
             loadServe.close();
         },1000)
-       
         // ...统一拦截响应状态.处理不同状态
         return config.data //retrun服务器响应的数据
     }
-   
-}, 
+},
 (err) => {
     // 超过5s后没有响应,或者链接中出现问题都会执行
     console.log(`<span style="display:inline-block;padding='10px 25px';color: '#fff';background:'red'">出错了>>></span>`, err);
