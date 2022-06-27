@@ -37,6 +37,11 @@
                         <ul class="twoSortDiv">
                             <li class="twoSort_hover" v-for="twoSort in twoLinked_Data" :key="twoSort" @click="twolevl(twoSort)">{{twoSort}}</li>
                         </ul>
+                        <div class="oneSortDivShow">
+                            <div v-for=" oneSortTu in  oneSortDivShow" :key="oneSortTu">
+                            
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="PopDiv"><span>POP</span></div>
@@ -74,6 +79,7 @@ export default {
             twoLinked_Data: [], // 一级导航点击关联数据
             count: 0, // 为1时清空 twoLinked_Data
             search_content:'',//搜索内容
+            oneSortDivShow:[],//一级导航数据
         }
     },
     methods: {
