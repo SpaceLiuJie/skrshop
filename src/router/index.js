@@ -14,7 +14,7 @@ const routes = [{
   path: '/search/:searItem',
   name: 'Search',
   component: () => import('@/views/search/index.vue'),
-
+ 
 
 }, {
   path: '/login',
