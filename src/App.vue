@@ -4,7 +4,7 @@
         <!-- <div>
             <router-link to="/home">Home1</router-link>
         </div> -->
-        <MyPage />
+        <!-- <MyPage /> -->
         <!-- <Coupon /> -->
         <router-view />
     </div>

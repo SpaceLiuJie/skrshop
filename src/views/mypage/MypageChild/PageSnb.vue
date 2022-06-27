@@ -62,7 +62,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .PageSnb {
     margin-bottom: 60px;
     margin-top: 60px;
