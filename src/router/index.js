@@ -10,12 +10,10 @@ const routes = [{
   path: '/home',
   name: 'Home',
   component: () => import('../views/home/index.vue'),
-},{
+}, {
   path: '/search/:searItem',
   name: 'Search',
   component: () => import('@/views/search/index.vue'),
-
-
 }, {
   path: '/login',
   name: 'Login',
@@ -28,14 +26,23 @@ const routes = [{
   path: '/coupon',
   name: 'Coupon',
   component: () => import('@/views/mypage/coupon/index.vue'),
-}
-,{
+}, {
   path: '/twolevl/:twolevlDetail',
   name: 'Twolevl',
   component: () => import('@/views/home/twolevl.vue'),
- 
-}
-]
+}, {
+  path: '/exclusive',
+  name: 'Exclusive',
+  component: () => import('@/views/home/TopRight/exclusive.vue'),
+}, {
+  path: '/event',
+  name: 'Event',
+  component: () => import('@/views/home/TopRight/event.vue'),
+}, {
+  path: '/pop',
+  name: 'Pop',
+  component: () => import('@/views/home/TopRight/pop.vue'),
+}]
 
 
 const router = new VueRouter({
