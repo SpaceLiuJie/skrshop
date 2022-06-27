@@ -11,27 +11,40 @@ const routes = [{
   name: 'Home',
   component: () => import('../views/home/index.vue'),
 },{
-  path: '/search',
+  path: '/search/:searItem',
   name: 'Search',
   component: () => import('@/views/search/index.vue'),
  
-},
-{
-  path: '/shopCar',
-  name: 'ShopCar',
-  component: () => import('@/views/shopCar/index.vue'),
+
+}, {
+  path: '/login',
+  name: 'Login',
+  component: () => import('../views/login/index.vue'),
+}, , {
+  path: '/mypage',
+  name: 'Mypage',
+  component: () => import('@/views/mypage/MyPage.vue'),
+}, {
+  path: '/coupon',
+  name: 'Coupon',
+  component: () => import('@/views/mypage/coupon/index.vue'),
+}
+,{
+  path: '/twolevl/:twolevlDetail',
+  name: 'Twolevl',
+  component: () => import('@/views/home/twolevl.vue'),
  
-},
-{
-  path: '/payTotal',
-  name: 'payTotal',
-  component: () => import('@/views/paytotal/index.vue'),
- 
-},
+}
 ]
+
 
 const router = new VueRouter({
   routes,
 })
+
+const VueRouterPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(to) {
+  return VueRouterPush.call(this, to).catch(err => err)
+}
 
 export default router
