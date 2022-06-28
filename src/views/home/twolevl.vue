@@ -18,18 +18,18 @@
             <div class="statistics">
                 <div class="count"><span>共计{{ dailyContentTuShow.length }}件</span></div>
                 <div class="countClass">
-                    <el-select v-model="value" placeholder="请选择">
+                    <el-select v-model="options[0].value" placeholder="请选择">
                         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>&nbsp;&nbsp;
                     <el-select v-model="value" placeholder="请选择">
-                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                        <el-option v-for="item in optionsPrice" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </div>
             </div>
             <div class="dailyContentTuShow">
-                <div class="dailyContentTuShowList" v-for="(item, index) in dailyContentTuShow" :key="index">
+                <div class="dailyContentTuShowList" v-for="(item, index) in dailyContentTuShow" :key="index" @click="ShopDetail(item)">
                     <div class="dailyContentTuShow_content">
                         <img :src="item.img" alt="">
                         <p>{{ item.title }}</p>
@@ -50,19 +50,23 @@ export default {
             count: 0,
             options: [{
                 value: '选项1',
-                label: '黄金糕'
+                label: '每页30'
             }, {
                 value: '选项2',
-                label: '双皮奶'
+                label: '每页60'
             }, {
                 value: '选项3',
-                label: '蚵仔煎'
+                label: '每页90'
+            }],
+            optionsPrice: [{
+                value: '选项1',
+                label: '价格最高'
             }, {
-                value: '选项4',
-                label: '龙须面'
+                value: '选项2',
+                label: '价格最低'
             }, {
-                value: '选项5',
-                label: '北京烤鸭'
+                value: '选项3',
+                label: '销售最高'
             }],
             value: '默认',
             dailyContentTuShow: [ //今日推荐数据
@@ -94,6 +98,10 @@ export default {
 
             })
         },
+        ShopDetail(item){
+            console.log(item);
+            this.$router.push(`/detail/${item.id}`)
+        }
 
     },
     created() {

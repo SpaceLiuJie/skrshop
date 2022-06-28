@@ -6,7 +6,7 @@
         </div> -->
         <!-- <MyPage /> -->
         <!-- <Coupon /> -->
-        <!-- <Login v-show="show"></Login> -->
+        <!-- <Login key="show"></Login> -->
         <router-view :key="$route.fullpath" />
     </div>
 </template>
@@ -22,6 +22,7 @@ export default {
         MyPage,
         // Coupon,
         Login,
+        
     },
     data() {
         return {
@@ -39,7 +40,6 @@ export default {
             }else{
                 this.show = false
                 this.Navshow=true;
-
             }
         }
     },
@@ -49,7 +49,7 @@ export default {
     mounted(){
         this.gainToken()
 
-    }
+    },
    
 };
 </script>
