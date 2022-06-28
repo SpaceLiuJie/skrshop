@@ -3,13 +3,15 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+  {
     path: '/',
-    redirect: '/home',
-  }, {
+    redirect: '/login',
+  },
+   {
     path: '/home',
     name: 'Home',
-    component: () => import('../views/home/index.vue'),
+    component: () => import('../views/home/home.vue'),
   }, {
     path: '/search/:searItem',
     name: 'Search',
@@ -20,7 +22,12 @@ const routes = [{
     path: '/login',
     name: 'Login',
     component: () => import('../views/login/index.vue'),
-  }, , {
+  },
+  , {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/register/index.vue'),
+  },  {
     path: '/mypage',
     name: 'Mypage',
     component: () => import('@/views/mypage/MyPage.vue'),
@@ -44,6 +51,11 @@ const routes = [{
     path: '/twolevl/:twolevlDetail',
     name: 'Twolevl',
     component: () => import('@/views/home/twolevl.vue'),
+
+  }, {
+    path: '/shopCar',
+    name: 'ShowCar',
+    component: () => import('@/views/shopCar/index.vue'),
 
   }
 ]
