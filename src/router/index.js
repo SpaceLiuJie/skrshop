@@ -19,7 +19,15 @@ const routes = [{
   path: '/login',
   name: 'Login',
   component: () => import('../views/login/index.vue'),
-},]
+},{
+  path: '/signup',
+  name: 'Signup',
+  component: () => import('../views/signup/index.vue'),
+},{
+  path: '/wdna',
+  name: 'Wdna',
+  component: () => import('../views/wdna/index.vue'),
+}]
 
 const router = new VueRouter({
   routes,

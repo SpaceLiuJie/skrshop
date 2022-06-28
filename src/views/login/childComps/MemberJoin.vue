@@ -1,7 +1,7 @@
 <template>
   <div class="memberJoin">
     <div class="joinCont">
-        <LoginWrap/>
+      <LoginWrap/>
       <ThirdParty/>
       <NonMember/>
     </div>

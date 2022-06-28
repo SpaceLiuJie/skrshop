@@ -23,7 +23,9 @@
           <el-button type="primary" @click="submitForm('ruleForm')"
             >登录</el-button
           >
-          <el-button @click="resetForm('ruleForm')" style="margin-left: 5vw;">注册</el-button>
+          <el-button @click="resetForm('ruleForm')" style="margin-left: 5vw;">
+         <router-link :to="{name:'Signup'}">注册</router-link>
+          </el-button>
           <span class="inputBtn" @click="showImg">
         <img
           src="@/assets/images/login/forget.png"
