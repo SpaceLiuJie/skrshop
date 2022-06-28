@@ -45,19 +45,19 @@ module.exports = {
         //如何实现自定义加载文件资源路径
         //为什么用?
         //因为 在大型项目中，模块化划分，细化，文件路径过深。如果使用相对路径，书写不变
-    //     config.resolve.alias
-    //         .set('@/', resolve('src/'))
-    //         .set('@image', resolve('src/assets/images'))
-    //         .set('@component', resolve('src/components'))
-    //         .set('api', resolve('src/api'))
-    //         .set('utils', resolve('src/utils'))
-    //         .set('@scss', resolve('src/assets/sass'))
+        config.resolve.alias
+            .set('@/', resolve('src/'))
+            .set('@image', resolve('src/assets/images'))
+            .set('@component', resolve('src/components'))
+            .set('api', resolve('src/api'))
+            .set('utils', resolve('src/utils'))
+            .set('@scss', resolve('src/assets/sass'))
     },
     // 配置 npm run serve运行的服务
     devServer: {
         proxy: {
             '/': {
-                target: 'http://192.168.205.165:9528/',
+                target: 'http://192.168.205.63:3000/',
                 changeOrigin: true,
                 pathRewrite: {
                     '^/': ''
