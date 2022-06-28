@@ -10,6 +10,13 @@
             <div class="top"> 查询 </div>
             <div class="top"> 客户反馈 </div>
         </div>
+        <div class="centertop">
+            <div class="top"> 常见问题 </div>
+            <div class="top"> 消息 </div>
+            <div class="top"> 会员福利 </div>
+            <div class="top"> 查询 </div>
+            <div class="top"> 客户反馈 </div>
+        </div>
     </div>
 </template>
 
