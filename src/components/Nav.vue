@@ -12,13 +12,18 @@
             </div>
             <div class="navBag">
                 <div class="registerDiv">
-                    <span class="register">LOGINOUT</span>
+                    <p><svg t="1656339584889" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23891" width="200" height="200"><path d="M868 732h-70.3c-4.8 0-9.3 2.1-12.3 5.8-7 8.5-14.5 16.7-22.4 24.5-32.6 32.5-70.5 58.1-112.7 75.9-43.6 18.4-90 27.8-137.9 27.8-47.9 0-94.3-9.4-137.9-27.8-42.2-17.8-80.1-43.4-112.7-75.9-32.6-32.5-58.1-70.4-76-112.5C167.3 606.2 158 559.9 158 512s9.4-94.2 27.8-137.8c17.8-42.1 43.4-80 76-112.5s70.5-58.1 112.7-75.9c43.6-18.4 90-27.8 137.9-27.8 47.9 0 94.3 9.3 137.9 27.8 42.2 17.8 80.1 43.4 112.7 75.9 7.9 7.9 15.3 16.1 22.4 24.5 3 3.7 7.6 5.8 12.3 5.8H868c6.3 0 10.2-7 6.7-12.3C798 160.5 663.8 81.6 511.3 82 271.7 82.6 79.6 277.1 82 516.4 84.4 751.9 276.2 942 512.4 942c152.1 0 285.7-78.8 362.3-197.7 3.4-5.3-0.4-12.3-6.7-12.3z" p-id="23892"></path><path d="M956.9 505.7L815 393.7c-5.3-4.2-13-0.4-13 6.3v76H488c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h314v76c0 6.7 7.8 10.5 13 6.3l141.9-112c4.1-3.2 4.1-9.4 0-12.6z" p-id="23893"></path></svg></p>
+                    <p><span class="register">LOGINOUT</span></p>
                 </div>
-                <div class="loginDiv">
-                    <span class="login">MY</span>
+                <div class="loginDiv" @click="myself">
+                    <p><svg t="1656340034999" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="24064" width="200" height="200"><path d="M955.566829 1024H71.430244V717.299512h82.139785v81.92H153.350244v142.860488h720.296585V760.257561l-2.167883-40.900059 19.930537-1.058965H955.566829z" fill="#333333" p-id="24065"></path><path d="M366.142439 708.308293h291.715122v91.910244H366.142439z" fill="#2E91E5" p-id="24066"></path><path d="M325.781854 487.264156c-32.298459-25.664937-57.543805-56.265054-75.026732-90.9312C232.522927 360.158283 223.281951 320.586927 223.281951 278.727805c0-37.633249 7.80238-74.1376 23.197347-108.494049 14.785561-33.007766 35.904937-62.608859 62.768702-87.974088C364.064468 30.500215 436.773463 1.998049 513.998049 1.998049c77.224585 0 149.93358 28.502166 204.750049 80.251629 26.863766 25.365229 47.983141 54.966322 62.768702 87.974088C796.911766 204.590205 804.714146 241.094556 804.714146 278.727805c0 37.223649-8.331863 73.777951-24.775805 108.653893-15.125229 32.088663-36.384468 61.310127-63.188292 86.86517l-55.156137-57.843512C702.354107 377.551298 724.792195 328.659044 724.792195 278.727805c0-108.52402-94.557659-196.807805-210.794146-196.807805s-210.794146 88.283785-210.794147 196.807805c0 57.903454 24.99559 108.384156 72.299396 145.957463l-49.721444 62.578888z" fill="#333333" p-id="24067"></path><path d="M412.317346 461.309502L138.125112 771.66642a3.876215 3.876215 0 0 1-5.474653 0.339668l-59.731669-52.768468a3.876215 3.876215 0 0 1-0.339668-5.474654L346.771356 403.406049a3.876215 3.876215 0 0 1 5.474654-0.339669l59.731668 52.768469a3.876215 3.876215 0 0 1 0.339668 5.474653zM613.930459 463.777093l274.182243 310.346927a5.149971 5.149971 0 0 0 7.262908 0.44956l57.833522-51.090107a5.149971 5.149971 0 0 0 0.449561-7.262907L679.476449 405.873639a5.149971 5.149971 0 0 0-7.262908-0.449561l-57.833521 51.090107a5.149971 5.149971 0 0 0-0.449561 7.262908z" fill="#333333" p-id="24068"></path></svg></p>
+                    <p><span class="login">MY</span></p>
                 </div>
                 <div class="shopCarDiv">
-                    <span class="shopCar">购物车</span>
+                    <p><svg t="1656338372817" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23037" width="200" height="200"><path d="M384 960c-47.104 0-85.312-36.48-85.312-81.472S336.896 797.12 384 797.12s85.312 36.48 85.312 81.408C469.312 923.52 431.104 960 384 960z m426.688 0c-47.168 0-85.376-36.48-85.376-81.472s38.208-81.408 85.376-81.408c47.104 0 85.312 36.48 85.312 81.408C896 923.52 857.792 960 810.688 960zM262.272 186.24H1024l-91.968 407.232h-577.92l13.12 58.56h554.112l-18.56 81.408H298.24l-31.552-139.968h-0.256l-59.52-265.6-41.152-182.4H0V64h234.752l27.52 122.24z m18.368 81.408L335.68 512h527.424l55.232-244.352H280.64z" fill="#000000" p-id="23038"></path></svg>
+                    </p>
+                    <!-- <p></p><span class="shopCar">购物车</span> -->
+                    <p>0</p>
                 </div>
             </div>
 
@@ -44,9 +49,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="PopDiv"><span>POP</span></div>
-                <div class="exclusiveDiv"><span>EXCLUSIVE</span></div>
-                <div class="eeventDiv"><span>EEVENT</span></div>
+                <div class="PopDiv" @click="clickPOP" ><span>POP</span></div>
+                <div class="exclusiveDiv" @click="clickEXCLUSIVE"><span>EXCLUSIVE</span></div>
+                <div class="eeventDiv" @click="clickEVENT"><span>EVENT</span></div>
                 <div class="bestDiv"><span>BEST</span></div>
                 <div class="contentNav_right" v-show="show">
 
@@ -163,7 +168,20 @@ export default {
             console.log('---',searItem);
             this.$router.push(`/search/${searItem}`);
             this.search_content = '';
-        }
+        },
+        myself(){
+            this.$router.push(`/mypage`)
+        },
+        clickEXCLUSIVE(){
+            this.$router.push(`/exclusive`)
+        },
+        clickEVENT(){
+            this.$router.push(`/event`)
+        },
+        clickPOP(){
+            this.$router.push(`/POP`)
+        },
+
         
     },
     mounted() {
@@ -177,7 +195,7 @@ export default {
     },
 }
 </script>
-<style  scoped >
+<style  scoped lang="less" >
 * {
     margin: 0;
     padding: 0;
@@ -244,6 +262,15 @@ export default {
     cursor: pointer;
     line-height: 60px;
     margin-top: 10px;
+    .icon{
+        width: 20px;
+        height: 20px;
+    }
+    p{
+        line-height: 20px;
+        text-align: center;
+        margin: 0 auto;
+    }
 }
 
 .nav .loginDiv {
@@ -252,6 +279,15 @@ export default {
     line-height: 60px;
     cursor: pointer;
     margin-top: 10px;
+    .icon{
+        width: 20px;
+        height: 20px;
+    }
+    p{
+        text-align: center;
+        line-height: 20px;
+        margin: 0 auto;
+    }
 }
 
 .nav .shopCarDiv {
@@ -260,6 +296,15 @@ export default {
     line-height: 60px;
     cursor: pointer;
     margin-top: 10px;
+    .icon{
+        width: 20px;
+        height: 20px;
+    }
+    p{
+        line-height:20px;
+        text-align: center;
+        margin: 0 auto;
+    }
 }
 
 .contentNav {
