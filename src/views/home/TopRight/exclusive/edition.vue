@@ -5,19 +5,19 @@
         </div>
         <div class="contentImg">
             <div class="Imgcontent one">
-                <div class="mask"></div>
+                <div class="mask maskone"></div>
                 <span class="stride strideone">stride.fun</span>
                 <span class="strideTitle">安踏男服史努比联名短袖短T恤2021新款短t</span><br />
                 <span class="strideNet">www.stride.fun</span>
             </div>
             <div class="Imgcontent">
-                <div class="mask"></div>
+                <div class="mask masktwo"></div>
                 <span class="stride stridetwo">stride.fun</span>
                 <span class="strideTitle">安踏男服史努比联名短袖短T恤2021新款短t</span><br />
                 <span class="strideNet">www.stride.fun</span>
             </div>
             <div class="Imgcontent">
-                <div class="mask"></div>
+                <div class="mask maskthree"></div>
                 <span class="stride stridethree">stride.fun</span>
                 <span class="strideTitle">安踏男服史努比联名短袖短T恤2021新款短t</span><br />
                 <span class="strideNet">www.stride.fun</span>
@@ -114,12 +114,24 @@ export default {
     position: absolute;
     width: 360px;
     height: 360px;
-    background-image: linear-gradient(rgb(138, 230, 236), transparent);
+    /* background-image: linear-gradient(rgb(138, 230, 236), transparent); */
     opacity: 0;
 }
 
+.maskone {
+    background: rgb(138, 230, 236);
+}
+
+.masktwo {
+    background: rgb(225, 49, 178);
+}
+
+.maskthree {
+    background: rgb(246, 223, 15);
+}
+
 .Imgcontent:hover .mask {
-    opacity: 1;
+    opacity: 0.7;
 }
 
 .Imgcontent:hover {

@@ -56,16 +56,20 @@ export default {
     margin: 0 auto;
 }
 
-#title {
-    width: 20%;
-    margin: 0 auto;
+.title {
+    width: 25%;
+    margin: 40px auto;
+    text-align: center;
 }
 
-.title {
-    font-size: 44px;
+#title {
+    color: rgb(5, 5, 5);
+    font-family: "ProximaNova-Thin";
+    font-size: 48px;
+    text-transform: uppercase;
     text-align: center;
-    color: rgba(0, 0, 0, 0.85);
-    font-weight: 500;
+    margin: 60px 0 20px 0;
+    font-weight: 100;
 }
 
 .main {

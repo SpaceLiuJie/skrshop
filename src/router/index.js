@@ -42,6 +42,30 @@ const routes = [{
   path: '/pop',
   name: 'Pop',
   component: () => import('@/views/home/TopRight/pop.vue'),
+}, {
+  path: '/about',
+  name: 'About',
+  component: () => import('@/views/home/footerNav/aboutus.vue'),
+}, {
+  path: '/alliances',
+  name: 'Alliances',
+  component: () => import('@/views/home/footerNav/alliances.vue'),
+}, {
+  path: '/conditions',
+  name: 'Conditions',
+  component: () => import('@/views/home/footerNav/conditions.vue'),
+}, {
+  path: '/privacy',
+  name: 'Privacy',
+  component: () => import('@/views/home/footerNav/Privacy.vue'),
+}, {
+  path: '/consultancy',
+  name: 'Consultancy',
+  component: () => import('@/views/home/footerNav/consultancy.vue'),
+}, {
+  path: '/severcenter',
+  name: 'Severcenter',
+  component: () => import('@/views/home/footerNav/severcenter.vue'),
 }]
 
 
