@@ -37,7 +37,7 @@
         <address-form @closeAdd="chooseAddress" :isShow="isShow"></address-form>
       </div>
       <!-- 选择地址 -->
-      <div class="moreContent" v-show="showMore ">
+      <div class="moreContent" v-show="showMore">
         <div class="title">
           <h2>选择您的收货地址</h2>
           <div class="cancel" @click="showMore = false">
@@ -147,7 +147,8 @@
 </template>
 
 <script>
-import { getUserAddress, setDefaultAddress } from "@/api/address.js";
+import { getUserAddress, setDefaultAddress, } from "@/api/address.js";
+import { addOrder,payOrder} from '@/api/shopcar.js'
 export default {
   name: "PayTotal",
   data() {
@@ -198,7 +199,71 @@ export default {
     },
     // 提交订单
     submitOrder() {
-      this.$router.push('/')
+      let store_id_list = [];
+      this.shopDetail.forEach((item) => {
+        store_id_list.push(item.store_id);
+      });
+      // console.log( store_id_list); 过滤店铺重复
+      store_id_list = [...new Set(store_id_list)];
+      // console.log( store_id_list);
+      let order = [];
+      store_id_list.forEach((el) => {
+        let type = {};
+        type.store_id = el;
+        type.skus = [];
+        type.money = 0;
+        this.shopDetail.forEach((item) => {
+          if (item.store_id == el) {
+            let obj = {};
+            type.money += item.special_price - 0;
+            obj.sku_id = item.sku_id;
+            obj.price = item.price;
+            obj.actual_price = item.special_price;
+            obj.num = item.num;
+            type.skus.push(obj);
+          }
+        });
+        order.push(type);
+      });
+      console.log(this.$store.state.user.username);
+
+      let idLocal = [];
+      order.forEach((item, index) => {
+        //设置code订单编号(不能重复)
+        let code =
+          this.$store.state.user.username + index + Date.now();
+        addOrder({
+          code,
+          store_id: item.store_id,
+          customer_id: 1,
+          money: this.total,
+          skus: JSON.stringify(item.skus),
+        }).then((res) => {
+          if (res.code == 200) {
+            idLocal.push(res.orderId);
+            // localStorage.setItem("idLocal", JSON.stringify(idLocal));
+          }
+        });
+      });
+      // 跳转支付宝
+      payOrder({
+        outTradeNo:
+          this.$store.state.user.username  + Date.now(),
+        totalAmount: this.discounts,
+        subject: this.$store.state.user.username + "'s shopping order",
+        body:
+          this.$store.state.user.username +
+          `is paying for ${this.shopDetail[0].title} ...`,
+      }).then((res) => {
+        if (res.code == 200) {
+          this.$message.success("jumping to alipay page");
+          setTimeout(() => location.replace(res.data), 1000);
+        }
+      });
+          //删除购物车
+                // this.shopDetail.forEach(item => {
+                //     this.$store.dispatch('deleteSqlShop',{id:item.id})
+                // })
     },
     getUserAddress() {
       let data = {
@@ -208,25 +273,26 @@ export default {
       getUserAddress(data).then((data) => {
         console.log(data);
         this.userAdress = data.data;
-        let address = this.userAdress.filter(item=> item.prime == true);
+        let address = this.userAdress.filter((item) => item.prime == true);
         this.consignee = address[0].name + "-" + address[0].tel;
         this.address = address[0].address;
       });
     },
     getShopDetail() {
-      var arr = this.$store.state.shopcarSet.order;
+      var arr = this.$store.state.shopcarSet.shopcarSet;
+      console.log(this.$store.state.shopcarSet.shopcarSet);
       // console.log(this.$store.state.shopcarSet.order);
-      for (let i = 0; i < arr.length; i++) {
-        arr[i].params = JSON.parse(arr[i].params);
-        break;
-      }
+      // for (let i = 0; i < arr.length; i++) {
+      //   console.log(arr[i].params);
+      //   arr[i].params = JSON.parse(arr[i].params);
+      //   break;
+      // }
       this.shopDetail = arr;
     },
   },
   created() {
     this.getUserAddress();
     this.getShopDetail();
-    
   },
   computed: {
     total() {

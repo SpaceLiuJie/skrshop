@@ -83,6 +83,12 @@ const routes = [
     component: () => import('@/views/paytotal/index.vue'),
    
   },
+  {
+    path: '/paySuccess',
+    name: 'PaySuccess',
+    component: () => import('@/views/paySuccess/PaySuccess.vue'),
+   
+  },
 ]
 
 
