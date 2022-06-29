@@ -98,8 +98,14 @@ export default {
   },
   methods: {
     // 跳转结算页面
-    payTotal(){
-      this.$router.push('/payTotal')
+    payTotal() {
+      // console.log(this.checkeds);
+      if (this.checkeds.length <= 0) {
+        return;
+      } else {
+        this.$store.dispatch("shopcarSet/shopcarSet", this.checkeds);
+      }
+      this.$router.push("/payTotal");
     },
     getShopCar() {
       // Id用户得id
@@ -150,7 +156,6 @@ export default {
         addShopCar(items).then((data) => {
           item = data;
           this.getShopCar();
-
         });
       }
     },

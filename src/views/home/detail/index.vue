@@ -93,7 +93,7 @@
 <script > 
 import Vue from 'vue'
 import {postDetail,} from '../../api/detail.js'
-// import Details from  '../../views/detail/childComps/Details/Detalis';
+import Details from  '../../views/detail/childComps/Details/Detalis';
 import DetailsSortNav from  '../../views/detail/childComps/DetailsSortNav/DetailsSortNav';
 import QA from  '../../views/detail/childComps/QA/QA';
 import ReturnDelivery from  '../../views/detail/childComps/ReturnDelivery/ReturnDelivery';
@@ -105,7 +105,7 @@ export default {
       ReturnDelivery,
        QA,
       Review,
-      //  Details,
+      Details,
    },
   props: ['id'],
   data(){

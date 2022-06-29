@@ -19,6 +19,17 @@ export function get(key){  //获取本地数据
   }
   export function clear(){   //清空本地记录
     console.log('清空本地记录');
-      localStorage.clear()
+     return localStorage.clear()
   }
-  
+
+  let key = 'str';
+export function setLocalStorage(value){
+    return localStorage.setItem(key,value);
+}
+export function getLocalStorage(key){
+    return localStorage.getItem(key);
+}
+export function removeLocalStorage(key){
+    return localStorage.removeItem(key);
+}
+

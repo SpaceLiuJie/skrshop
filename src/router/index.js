@@ -23,6 +23,16 @@ const routes = [
     name: 'Login',
     component: () => import('../views/login/index.vue'),
   },
+  {
+    path: '/Signup',
+    name: 'signup',
+    component: () => import('../views/signup/index.vue'),
+  },
+  {
+    path: '/pop',
+    name: 'Pop',
+    component: () => import('../views/pop/index.vue'),
+  },
   , {
     path: '/register',
     name: 'Register',
@@ -62,7 +72,17 @@ const routes = [
     name: 'Detail',
     component: () => import('@/views/detail/index.vue'),
 
-  }
+  },{
+    path: '/shopCar',
+    name: 'ShopCar',
+    component: () => import('@/views/shopCar/index.vue'),
+   
+  },{
+    path: '/payTotal',
+    name: 'PayTotal',
+    component: () => import('@/views/paytotal/index.vue'),
+   
+  },
 ]
 
 

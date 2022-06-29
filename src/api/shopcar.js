@@ -16,17 +16,17 @@ export function getShopCar(option) {
     })
 }
 
-// 删除商品
-export function deleteShopCar(option) {
-    // id
-    return request({
-        url: '/shopCar/deleteShopCar',
-        method: 'post',
-        data: {
-            ...option,
-        }
-    })
-}
+ // 删除商品
+ export function deleteShopCar(option) {
+     // id
+     return request({
+         url: 'http://127.0.0.1:3000/shopCar/deleteShopCar',
+         method: 'post',
+         data: {
+             ...option,
+         }
+     })
+ }
 
 //添加购物车
 export function addShopCar(data) {

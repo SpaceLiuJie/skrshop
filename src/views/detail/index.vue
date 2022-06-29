@@ -68,15 +68,47 @@
         </div>
       </div>
     </div>
+
+        <div class="details">
+       <DetailsSortNav @jumptoWhich="whichOne" ref="DETAILS" :currentIndexIsOn="0" />
+       <div class="details-img">
+<ul>
+    <li>
+       <img  class='details-imgs'  src="../../assets/images/shop.jpg" alt=""> 
+    </li>
+</ul>
+</div>
+                  
+    </div>
+    <div class="review">
+      <DetailsSortNav @jumptoWhich="whichOne"  ref="REVIEW" :currentIndexIsOn="1" />
+      <Review/>
+    </div>
+    <div class="q_a">
+      <DetailsSortNav @jumptoWhich="whichOne"  ref="Q_A" :currentIndexIsOn="2" />
+      <QA/>
+    </div>
+    <div class="return_delivery"> 
+      <DetailsSortNav @jumptoWhich="whichOne"  ref="RETURN_DELIVERY" :currentIndexIsOn="3" />
+      <ReturnDelivery/>
+    </div>
+
   </div>
 </template>
 
-<script>
+<script > 
 import Vue from 'vue'
 import { gaingetSkuDetail, gaingetSpuDetail } from '@/api/detail.js'
 import { addShopCar, deleteShopCar } from '../../api/shopcar';
 export default {
   name: "Details",
+    components:{
+      DetailsSortNav,
+      ReturnDelivery,
+       QA,
+      Review,
+      Details,
+   },
   props: ['id'],
   data() {
     return {
@@ -206,13 +238,12 @@ export default {
 <style lang="less">
 * {
   box-sizing: border-box;
-  list-style: none;
 }
 
 #detail {
   width: 1240px;
   height: 100%;
-  margin: 10px auto;
+  margin: 0 auto;
 }
 
 .back_or_forward {

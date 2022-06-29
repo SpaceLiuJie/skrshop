@@ -9,9 +9,11 @@ import {
 import {
     login
 } from '../api/login.js'
+import shopcarSet from './modules/shopcarSet.js'
+
 Vue.use(Vuex)
 let user = get('user') || {} //请求浏览器本地存储user数据
-export default new Vuex.Store({
+let store = new Vuex.Store({
     state: {
         user,
     },
@@ -48,8 +50,12 @@ export default new Vuex.Store({
             store.commit('REMOVEUSER')
         }
     },
-    modules: {}
+    modules: {
+        shopcarSet,
+    }
 })
+export default store;
+
 /**
  * 使用vuex 流程
  * 1:在state中初始化数据, 并创建actionh和mutaion函数
