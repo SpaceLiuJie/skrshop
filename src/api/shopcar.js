@@ -39,3 +39,39 @@
          }
      })
  }
+
+//  增加订单
+export function addOrder(option) {
+    // store_id, customer_id, money, skus, code
+    return request({
+        url: 'http://127.0.0.1:3000/order/addOrder',
+        method: 'post',
+        data: {
+            ...option,
+        }
+    })
+}
+
+// 跳转支付宝
+export function payOrder(option) {
+    // store_id, customer_id, money, skus, code
+    return request({
+        url: 'http://127.0.0.1:3000/order/payOrder',
+        method: 'post',
+        data: {
+            ...option,
+        }
+    })
+}
+
+// 更新订单
+export function updateOrder(option) {
+    // store_id, customer_id, money, skus, code
+    return request({
+        url: 'http://127.0.0.1:3000/order/updateOrder',
+        method: 'post',
+        data: {
+            ...option,
+        }
+    })
+}

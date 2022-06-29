@@ -3,7 +3,7 @@ import {setLocalStorage,getLocalStorage,removeLocalStorage} from '@/utils/localS
 export default {
     namespaced:true,
     state:{
-        shopcarSet:getLocalStorage(),
+        shopcarSet:JSON.parse(getLocalStorage()),
     },
     mutations:{
         SHOPCARSET(state,val){
