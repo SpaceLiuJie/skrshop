@@ -8,6 +8,7 @@
         <!-- <Coupon /> -->
         <!-- <Login key="show"></Login> -->
         <router-view :key="$route.fullpath" />
+         <FooterNav></FooterNav>
     </div>
 </template>
 <script>
@@ -15,6 +16,7 @@ import Nav from '../src/components/Nav.vue'
 import MyPage from './views/mypage/MyPage.vue'
 import Login from '@/views/login/index.vue'
 // import Coupon from './views/mypage/coupon/index.vue'
+import  FooterNav from './components/footer/FooterNav.vue'
 export default {
     name: 'APP',
     components: {
@@ -22,6 +24,7 @@ export default {
         MyPage,
         // Coupon,
         Login,
+         FooterNav,
         
     },
     data() {
