@@ -12,7 +12,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.error {
-    margin-bottom: -95px;
-}
 </style>

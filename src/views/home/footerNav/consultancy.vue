@@ -403,6 +403,7 @@ h3 {
     margin: 0 auto;
     padding-top: 30px;
     border-top: 2px solid black;
+    margin-bottom: 400px;
 }
 
 .mask {

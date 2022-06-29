@@ -1,7 +1,7 @@
 <template>
     <div class="employment">
         <div class="title">
-            <span id="title">服务中心</span>
+            <span id="title">招聘信息</span>
         </div>
         <div class="img">
             <img src="../../../assets/images/footerNav/img-recruit.jpg">
@@ -260,9 +260,10 @@ img {
 .finalform {
     width: 85%;
     height: 1266px;
-    margin: 20px auto;
+    margin: 0px auto;
     padding-top: 30px;
     border-top: 2px solid black;
+    margin-top: 20px;
 }
 
 .btn_micro {
