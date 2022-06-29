@@ -38,25 +38,25 @@ const routes = [
     name: 'Register',
     component: () => import('../views/register/index.vue'),
   },  {
+    // 个人中心
     path: '/mypage',
     name: 'Mypage',
     component: () => import('@/views/mypage/MyPage.vue'),
   }, {
+    // 优惠券页面
     path: '/coupon',
     name: 'Coupon',
     component: () => import('@/views/mypage/coupon/index.vue'),
   },{
+    // exclusive页面
     path: '/exclusive',
     name: 'Exclusive',
     component: () => import('@/views/home/TopRight/exclusive.vue'),
   }, {
+    // event页面
     path: '/event',
     name: 'Event',
     component: () => import('@/views/home/TopRight/event.vue'),
-  }, {
-    path: '/pop',
-    name: 'Pop',
-    component: () => import('@/views/home/TopRight/pop.vue'),
   }, {
     path: '/twolevl/:twolevlDetail',
     name: 'Twolevl',
@@ -82,13 +82,52 @@ const routes = [
     name: 'PayTotal',
     component: () => import('@/views/paytotal/index.vue'),
    
+  }, {
+    // 关于我们
+    path: '/about',
+    name: 'About',
+    component: () => import('@/views/home/footerNav/aboutus.vue'),
+  }, {
+    // 营销联盟
+    path: '/partner',
+    name: 'Alliances',
+    component: () => import('@/views/home/footerNav/alliances.vue'),
+  }, {
+    // 服务条款
+    path: '/terms',
+    name: 'Conditions',
+    component: () => import('@/views/home/footerNav/conditions.vue'),
+  }, {
+    // 隐私政策
+    path: '/privacy',
+    name: 'Privacy',
+    component: () => import('@/views/home/footerNav/Privacy.vue'),
+  }, {
+    // 咨询服务
+    path: '/advisory',
+    name: 'Consultancy',
+    component: () => import('@/views/home/footerNav/consultancy.vue'),
+  }, {
+    // 服务中心
+    path: '/serviceCenter',
+    name: 'Severcenter',
+    component: () => import('@/views/home/footerNav/severcenter.vue'),
+  }, {
+    // 招聘信息
+    path: '/offers',
+    name: 'Employment',
+    component: () => import('@/views/home/footerNav/employment.vue'),
+  }, {
+    // 全球的
+    path: '/global',
+    name: 'Error',
+    component: () => import('@/views/home/footerNav/error.vue'),
   },
   {
     path: '/paySuccess',
     name: 'PaySuccess',
     component: () => import('@/views/paySuccess/PaySuccess.vue'),
-   
-  },
+  }
 ]
 
 

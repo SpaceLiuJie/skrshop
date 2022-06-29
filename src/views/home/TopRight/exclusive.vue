@@ -6,18 +6,24 @@
         <exclusive />
         <Wantneed />
         <Edition />
+        <Talking />
+        <Wantneedtwo />
     </div>
 </template>
 <script>
 import exclusive from './exclusive/exclusivetop.vue'
 import Wantneed from './exclusive/wantneed.vue'
 import Edition from './exclusive/edition.vue'
+import Talking from './exclusive/talking.vue'
+import Wantneedtwo from './exclusive/wantneedtwo.vue'
 export default {
     name: 'Exclusive',
     components: {
         exclusive,
         Wantneed,
         Edition,
+        Talking,
+        Wantneedtwo,
     }
 }
 </script>

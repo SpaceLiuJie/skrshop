@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from 'axios'
 // import store from '../store/index'
 
@@ -9,10 +10,23 @@ import axios from 'axios'
 const instance = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 2000
+=======
+import axios from "axios";
+import {
+  Loading
+} from 'element-ui'
+// import Vue from 'vue';
+// import {set} from './localStrage'
+// import store from '../store/index.js'
+// import router from '../router/index.js'
+let instance = axios.create({
+  baseURL: process.env.VUE_APP_BASE_URL, //配置请求的根路径
+  timeout: 10000, //5s后没有响应认为事变
+>>>>>>> 16d3eb0ff30b7bb41ce0d5683fd625294bec3db1
 })
-  //第一种
+//第一种
 // let load = null;
-  //第二种
+//第二种
 let loadServe = null;
 
 // let loadServe = null;
