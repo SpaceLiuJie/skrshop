@@ -122,6 +122,11 @@ const routes = [
     path: '/global',
     name: 'Error',
     component: () => import('@/views/home/footerNav/error.vue'),
+  },
+  {
+    path: '/paySuccess',
+    name: 'PaySuccess',
+    component: () => import('@/views/paySuccess/PaySuccess.vue'),
   }
 ]
 
