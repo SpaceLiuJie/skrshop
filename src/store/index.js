@@ -36,6 +36,7 @@ let store = new Vuex.Store({
                     let user = {
                         token: data.data.token,
                         username: data.data.userInfo.username,
+                        customer_id:data.data.userInfo.id,
                     }
                     set("user", JSON.stringify(user));
                     store.commit('SETUSER', user)

@@ -2,19 +2,19 @@
  * 获取购物车列表
  * 
  */
- import request from "@/utils/request.js";
- // 搜索请求
+import request from "@/utils/request.js";
  
- export function getShopCar(option) {
-     // id
-     return request({
-         url: 'http://127.0.0.1:3000/shopcar/getShopCar',
-         method: 'post',
-         data: {
-             ...option,
-         }
-     })
- }
+//参数: 用户id
+export function getShopCar(option) {
+    // id
+    return request({
+        url: '/shopcar/getShopCar',
+        method: 'post',
+        data: {
+            ...option,
+        }
+    })
+}
  
  // 删除商品
  export function deleteShopCar(option) {
