@@ -57,21 +57,56 @@
           <input type="number" id="count" min="1" >
         </div>
         <div class="shop">
-          <span class="join" >加入购物车</span>
-          <span class="shopping-car" >立即购买</span>
+          <span class="join"  @click="addShop">加入购物车</span>
+          <span class="shopping-car"  @click="toPay">立即购买</span>
         </div>
       </div>
     </div>
+
+        <div class="details">
+       <DetailsSortNav @jumptoWhich="whichOne" ref="DETAILS" :currentIndexIsOn="0" />
+       <div class="details-img">
+<ul>
+    <li>
+       <img  class='details-imgs'  src="../../assets/images/shop.jpg" alt=""> 
+    </li>
+</ul>
+</div>
+                  
+    </div>
+    <div class="review">
+      <DetailsSortNav @jumptoWhich="whichOne"  ref="REVIEW" :currentIndexIsOn="1" />
+      <Review/>
+    </div>
+    <div class="q_a">
+      <DetailsSortNav @jumptoWhich="whichOne"  ref="Q_A" :currentIndexIsOn="2" />
+      <QA/>
+    </div>
+    <div class="return_delivery"> 
+      <DetailsSortNav @jumptoWhich="whichOne"  ref="RETURN_DELIVERY" :currentIndexIsOn="3" />
+      <ReturnDelivery/>
+    </div>
+
   </div>
 </template>
 
-<script>
+<script > 
 import Vue from 'vue'
-
-
-
+import {postDetail,} from '../../api/detail.js'
+// import Details from  '../../views/detail/childComps/Details/Detalis';
+import DetailsSortNav from  '../../views/detail/childComps/DetailsSortNav/DetailsSortNav';
+import QA from  '../../views/detail/childComps/QA/QA';
+import ReturnDelivery from  '../../views/detail/childComps/ReturnDelivery/ReturnDelivery';
+import Review from  '../../views/detail/childComps/Review/Review';
 export default {
   name: "Details",
+    components:{
+      DetailsSortNav,
+      ReturnDelivery,
+       QA,
+      Review,
+      //  Details,
+   },
   props: ['id'],
   data(){
     return{
@@ -93,7 +128,7 @@ export default {
     }
   },
   methods:{
-    
+  
      whichOne(ref){
         this.$refs[ref].$el.scrollIntoView(true)
       },
@@ -123,15 +158,97 @@ export default {
         this.topStyle.transform = `translate(${topX}px,${topY}px)`
         this.r_img.transform = `translate(-${this.imgWidthRight*((topX)/this.imgWidthLeft)}px,-${this.imgWidthRight*((topY)/this.imgWidthLeft)}px)`
       },
-      // 点击小图切换大图
-      // changeImg(event,index){
-      //   this.$refs.bigImgLeft.src = event.target.src
-      //   this.$refs.bigImgRight.src = event.target.src
-      //   this.currentIndex = index
-      //   // console.log(event.target.title);
-      //   this.currentStyle = event.target.title
-      // },
-  }
+      //点击小图切换大图
+      changeImg(event,index){
+        this.$refs.bigImgLeft.src = event.target.src
+        this.$refs.bigImgRight.src = event.target.src
+        this.currentIndex = index
+        // console.log(event.target.title);
+        this.currentStyle = event.target.title
+      },
+       //添加至购物车
+     addShop(){
+        // 判断是否登录
+        console.log('sadasdasd');
+        if (window.sessionStorage.token) {
+          // 判断是否选择款式
+          if (!this.currentStyle) {
+            this.$message.config({
+              top: '750px',
+            })
+            this.$message.info("未选择颜色");
+          }else{
+            if (this.lastStyle == this.currentStyle) {
+              this.$message.info("亲,购物车中有相同的款式哦,您可以前去购物车修改数量");
+              return
+            }
+            this.lastStyle = this.currentStyle
+            // 先将数量,样式,尺寸在当前详情界面商品信息添加修改
+            this.$store.dispatch('updateShopInfo',{
+              num: this.shopNum,
+              params: [this.currentStyle,this.styleSize],
+            })
+            // 再将修改后的当前商品详情添加至shopCart的vuex的state中
+            // this.$store.dispatch('updateShopCart',this.shop1)
+            this.$store.dispatch('ToShopCart',{shopInfo:this.shop1})
+            //清空本地sessionStorage,以及本地shopCart
+            this.$store.commit('clear_shop_cart')
+            // 拉取数据库数据到本地shopCart,并且添加值sessionStorage
+            this.$store.dispatch('initShopCart')
+            // this.$store.dispatch('addToSession')
+            this.$message.success("添加成功");
+          }
+        }else{
+          if (confirm('尚未登录,请先登录')) {
+            this.$router.push('/login')
+          }
+        }
+      },
+       toPay(){
+        console.log('sadasdasd');
+        if (window.sessionStorage.token) {
+          // 判断是否选择款式
+          if (!this.currentStyle) {
+            this.$message.config({
+              top: '450px',
+            })
+            this.$message.info("未选择颜色");
+          }else{
+            const buyShop = [
+              {
+                customer_id: window.sessionStorage.userId,
+                name: '龙虾小店',
+                num: this.shopNum,
+                params: [this.currentStyle,this.styleSize],
+                store_id: 1,
+                img: this.shop2[0].img,
+                price: this.shop2[0].price,
+                sku_id: this.shop1[0].id,
+                special_price: this.shop2[0].special_price,
+                title: this.shop2[0].title
+              }
+            ]
+            window.localStorage.buyShopList1 = JSON.stringify(buyShop)
+            this.$router.push('/payTotal')
+          }
+        }else{
+          this.visible = true;
+        }
+      },
+      //商品详情
+//         postDetail(){
+// let id=this.$route.params(data)
+// postDetail(id).then((data)=>{
+//   this.shop=data[0]
+
+// })
+
+
+
+// //         },
+//   },created() {
+//   this.postDetail()
+},
 };
 
 </script>
@@ -342,5 +459,22 @@ export default {
   width:  223px;
           background-color:  #000;
           color:  #fff;
+}.details-img{
+    width: 1240px;
+    margin: 0 auto;
+
 }
+ .details-img>ul{
+    width: 960px;
+    margin: 0 auto; 
+}
+ .details-img>li{
+    width: 100%;
+    margin: 0 auto;
+
+}
+ .details-imgs{
+    width: 960px;
+}
+
 </style>
