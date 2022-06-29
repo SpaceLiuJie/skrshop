@@ -3,8 +3,8 @@
  * 
  */
 import request from "@/utils/request.js";
-// 搜索请求
 
+//参数: 用户id
 export function getShopCar(option) {
     // id
     return request({
@@ -29,13 +29,13 @@ export function deleteShopCar(option) {
 }
 
 //添加购物车
-export function addShopCar(option) {
+export function addShopCar(data) {
     // id
     return request({
         url: '/shopCar/addShopCar',
         method: 'post',
         data: {
-            ...option,
+            ...data,
         }
     })
 }

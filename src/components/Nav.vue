@@ -92,7 +92,7 @@
                     <div class="loginDiv">
                         <span class="login">登录</span>
                     </div>
-                    <div class="shopCarDiv">
+                    <div class="shopCarDiv" @click="shopCar">
                         <span class="shopCar">购物车</span>
                     </div>
                 </div>
@@ -206,8 +206,9 @@ export default {
             this.$router.push(`/login`)
         },
         detail(shopDetail){   // 点击跳转到商品详情
+            console.log('-----------------------------------------------',shopDetail);
             this.$router.push(`/detail/${shopDetail.id}`);
-            this.$router.go(0)
+            // this.$router.go(0)
         }
 
 

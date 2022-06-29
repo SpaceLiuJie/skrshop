@@ -103,8 +103,9 @@ export default {
     },
     getShopCar() {
       // Id用户得id
+      let customer_id = this.$store.state.user.customer_id;
       let data = {
-        customer_id: 1,
+        customer_id,
       };
 
       getShopCar(data).then((data) => {
@@ -148,7 +149,7 @@ export default {
         deleteShopCar(datas);
         addShopCar(items).then((data) => {
           item = data;
-        this.getShopCar();
+          this.getShopCar();
 
         });
       }
