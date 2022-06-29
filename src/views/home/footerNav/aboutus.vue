@@ -4,7 +4,11 @@
             <span id="title">关与我们</span>
         </div>
         <div class="img">
+<<<<<<< HEAD
             <img src="../../../assets/images/footerNav/img_company.gif">
+=======
+            <img src="../../../assets/images/img_company.gif">
+>>>>>>> 16d3eb0ff30b7bb41ce0d5683fd625294bec3db1
         </div>
     </div>
 </template>
