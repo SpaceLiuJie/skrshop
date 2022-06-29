@@ -1,5 +1,5 @@
 <template>
-    <div class="wantneed">
+    <div class="wantneedtwo">
         <div class="title">
             <span id="title">WANT.NEED</span>
         </div>
@@ -31,7 +31,7 @@
 <script>
 import { getTypeOneList } from '../../../../api/exclusive.js'
 export default {
-    name: 'Wantneed',
+    name: 'Wantneedtwo',
     data() {
         return {
             wantneedList: []
@@ -39,72 +39,20 @@ export default {
     },
     methods: {
         async getTypeOneList() {
-            const { res } = await getTypeOneList("服饰")
-            this.wantneedList = res.slice(200, 208)
+            const { res } = await getTypeOneList("服饰");
+            this.wantneedList = res.slice(213, 221);
         }
     },
     created() {
-        this.getTypeOneList()
+        this.getTypeOneList();
     }
 
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 * {
     cursor: pointer;
-}
-
-.price {
-    height: 20px;
-}
-
-.discount_after {
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-    padding-right: 15px;
-}
-
-.needContent {
-    height: 246.5px;
-    width: 136.5px;
-    outline: 1px solid rgb(219, 215, 215);
-    margin-left: 15px;
-    float: left;
-}
-
-.needContent:hover {
-    outline: 2px solid rgba(221, 220, 224, 0.4);
-    box-shadow: 0px 3px 3px #e8e6e4;
-}
-
-.discount {
-    text-decoration: line-through;
-    color: rgba(0, 0, 0, 0.45);
-    font-size: 14px;
-}
-
-.percent {
-    color: red;
-    font-size: 16px;
-    padding: 35px;
-}
-
-.website {
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.45);
-    height: 15px;
-}
-
-.contentNeed {
-    width: 1240px;
-    margin: 0 auto;
-}
-
-.front {
-    font-size: 14px;
-    height: 28px;
 }
 
 .title {
@@ -166,5 +114,62 @@ export default {
 .contentImg {
     width: 136.5px;
     height: 136.5px;
+}
+
+.price {
+    height: 20px;
+}
+
+.discount_after {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    padding-right: 15px;
+}
+
+.needContent {
+    height: 246.5px;
+    width: 136.5px;
+    outline: 1px solid rgb(219, 215, 215);
+    margin-left: 15px;
+    float: left;
+}
+
+.needContent:hover {
+    outline: 2px solid rgba(221, 220, 224, 0.4);
+    box-shadow: 0px 3px 3px #e8e6e4;
+}
+
+.discount {
+    text-decoration: line-through;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 14px;
+}
+
+.percent {
+    color: red;
+    font-size: 16px;
+    padding: 35px;
+}
+
+.website {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.45);
+    height: 15px;
+}
+
+.contentNeed {
+    width: 1240px;
+    margin: 0 auto;
+}
+
+.front {
+    font-size: 14px;
+    height: 28px;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 </style>

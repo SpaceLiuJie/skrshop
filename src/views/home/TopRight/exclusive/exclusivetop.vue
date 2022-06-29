@@ -81,6 +81,7 @@ export default {
     width: 822px;
     height: 822px;
     float: left;
+    margin-top: 5px;
 }
 
 .contentRight {

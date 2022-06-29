@@ -5,25 +5,34 @@
         </div>
         <div class="contentImg">
             <div class="Imgcontent one">
+                <div class="mask maskone"></div>
                 <span class="stride strideone">stride.fun</span>
-                <div class="mask"></div>
                 <span class="strideTitle">安踏男服史努比联名短袖短T恤2021新款短t</span><br />
                 <span class="strideNet">www.stride.fun</span>
             </div>
             <div class="Imgcontent">
+                <div class="mask masktwo"></div>
                 <span class="stride stridetwo">stride.fun</span>
-                <div class="mask"></div>
                 <span class="strideTitle">安踏男服史努比联名短袖短T恤2021新款短t</span><br />
                 <span class="strideNet">www.stride.fun</span>
             </div>
             <div class="Imgcontent">
+                <div class="mask maskthree"></div>
                 <span class="stride stridethree">stride.fun</span>
-                <div class="mask"></div>
                 <span class="strideTitle">安踏男服史努比联名短袖短T恤2021新款短t</span><br />
                 <span class="strideNet">www.stride.fun</span>
             </div>
         </div>
-
+        <div class="ImgBot">
+            <img class="BotImg"
+                src="https://img.fishfay.com/shopgoods/1/962129532/zt-962129532/2d1151d153012246a530be9d9e88d9eb.jpg">
+            <img class="BotImg"
+                src="https://img.fishfay.com/shopgoods/17/A35046808/zt-A35046808/c6426b93d7cea8bc840cb19202de5f16.jpg">
+            <img class="BotImg"
+                src="https://img.fishfay.com/shopgoods/1/952129113/zt-952129113/9c2d3fce8dd7d7b6d92d85dc3d1d6b96.jpg">
+            <img class="BotImg"
+                src="https://img.fishfay.com/shopgoods/1/952129782/zt-952129782/64e21b95a84a85e780891d7bafb82cdf.jpg">
+        </div>
     </div>
 </template>
 
@@ -36,6 +45,18 @@ export default {
 <style scoped>
 * {
     cursor: pointer;
+}
+
+.ImgBot {
+    width: 1240px;
+    height: 296px;
+    margin: 10px auto;
+}
+
+.BotImg {
+    width: 295px;
+    height: 295px;
+    margin-left: 10px;
 }
 
 .title {
@@ -55,11 +76,6 @@ export default {
     text-overflow: ellipsis;
 }
 
-.Imgcontent:hover {
-    outline: 1px solid rgb(183, 179, 179);
-    box-shadow: 0px 3px 5px #e8e6e4;
-}
-
 .strideNet {
     color: rgba(0, 0, 0, 0.45);
     font-size: 14px;
@@ -74,13 +90,6 @@ export default {
     text-align: center;
     margin: 60px 0 20px 0;
     font-weight: 100;
-}
-
-.img-caption {
-    width: 360px;
-    height: 360px;
-    margin-left: 38px;
-    z-index: -1;
 }
 
 .contentImg {
@@ -98,23 +107,36 @@ export default {
     padding-top: 30px;
     padding-left: 30px;
     position: relative;
-    width: 330px;
-    height: 330px;
+    z-index: -1;
 }
 
 .mask {
     position: absolute;
-    border: 4px solid black;
-    top: 0;
-    left: 0;
-    width: 330px;
-    height: 330px;
-    background-color: #935414;
+    width: 360px;
+    height: 360px;
+    /* background-image: linear-gradient(rgb(138, 230, 236), transparent); */
     opacity: 0;
 }
 
-.stride:hover .mask {
-    opacity: 1;
+.maskone {
+    background: rgb(138, 230, 236);
+}
+
+.masktwo {
+    background: rgb(225, 49, 178);
+}
+
+.maskthree {
+    background: rgb(246, 223, 15);
+}
+
+.Imgcontent:hover .mask {
+    opacity: 0.7;
+}
+
+.Imgcontent:hover {
+    outline: 1px solid rgb(244, 241, 241);
+    box-shadow: 0px 3px 5px #f5f3f1;
 }
 
 .Imgcontent {
@@ -122,7 +144,7 @@ export default {
     height: 450px;
     margin-left: 38px;
     float: left;
-    outline: 1px solid rgb(220, 217, 217);
+    outline: 1px solid rgb(245, 242, 242);
 }
 
 .strideone {
