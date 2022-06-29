@@ -72,7 +72,17 @@ const routes = [
     name: 'Detail',
     component: () => import('@/views/detail/index.vue'),
 
-  }
+  },{
+    path: '/shopCar',
+    name: 'ShopCar',
+    component: () => import('@/views/shopCar/index.vue'),
+   
+  },{
+    path: '/payTotal',
+    name: 'PayTotal',
+    component: () => import('@/views/paytotal/index.vue'),
+   
+  },
 ]
 
 

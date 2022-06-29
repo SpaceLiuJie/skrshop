@@ -6,11 +6,15 @@ import './assets/less/a.less'
 import './assets/less/global.less'
 import store from './store'
 
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+
 
 import ShopItem from '@/components/shopItem/index.js'
+import AddressForm from '@/components/addressForm/index.js'
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ShopItem);
+Vue.use(AddressForm);
 
 Vue.config.productionTip = false
 
