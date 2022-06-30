@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Nav v-show="Navshow"></Nav>
+        <Nav ></Nav>
         <!-- <div>
             <router-link to="/home">Home1</router-link>
         </div> -->
@@ -58,5 +58,12 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="less" scoped>
+// .FooterNav{
+//     position: absolute;
+//     bottom: 0px;
+// }
+// .is-active{
+//     background: green;
+// }
 </style>

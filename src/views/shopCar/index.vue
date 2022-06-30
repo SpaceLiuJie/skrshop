@@ -113,7 +113,7 @@ export default {
       let data = {
         customer_id,
       };
-        
+
       getShopCar(data).then((data) => {
         // if(data.length<=0){
         //   console.log('购物车为空');
@@ -133,8 +133,10 @@ export default {
               break;
             }
           }
-          console.log(data.data);
+          console.log('shopCar数据',data.data);
           this.shopCar = data.data;
+          let shopCarlength = this.shopCar.length
+          this.$bus.$emit('shopCarlength',shopCarlength)
         }
       });
     },

@@ -18,7 +18,7 @@
           </span>
         </el-form-item>
       </el-form>
-      
+
     </div>
     <div class="btnGroup">
       <ul class="link">
@@ -94,10 +94,11 @@ export default {
           });
           setTimeout(() => {
             this.$router.push("/home");
+           
           }, 500);
 
-        }else{
-           this.$message({
+        } else {
+          this.$message({
             message: "登录失败",
             type: "error",
           });
@@ -113,6 +114,7 @@ export default {
       this.imgShow = !this.imgShow;
     },
   },
+ 
 };
 </script>
 
