@@ -208,7 +208,7 @@ export default {
         detail(shopDetail){   // 点击跳转到商品详情
             console.log('-----------------------------------------------',shopDetail);
             this.$router.push(`/detail/${shopDetail.id}`);
-            // this.$router.go(0)
+            this.$router.go(0)
         }
 
 
@@ -504,7 +504,7 @@ export default {
             border:1px solid #333;
 
             img {
-                width: 140px;
+                width: 135px;
                 height: 173px;
             }
             p {

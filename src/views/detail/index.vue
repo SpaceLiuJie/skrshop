@@ -26,11 +26,11 @@
         </div>
         <div class="ShopSkuDetail_Tu">
           <div v-for="(item, index) in ShopSkuDetail_Tu " :key="index">
-            <ul >
+            <ul>
               <!-- <li><img :src="item.normal" alt="加载失败" /></li> -->
-              <li @click="amplifier(item,index)"><img :src="item.small" alt="加载失败" /></li>
+              <li @click="amplifier(item, index)"><img :src="item.small" alt="加载失败" /></li>
             </ul>
-           
+
           </div>
         </div>
       </div>
@@ -69,46 +69,53 @@
       </div>
     </div>
 
-        <div class="details">
-       <DetailsSortNav @jumptoWhich="whichOne" ref="DETAILS" :currentIndexIsOn="0" />
-       <div class="details-img">
-<ul>
-    <li>
-       <img  class='details-imgs'  src="../../assets/images/shop.jpg" alt=""> 
-    </li>
-</ul>
-</div>
-                  
+    <div class="details">
+      <DetailsSortNav @jumptoWhich="whichOne" ref="DETAILS" :currentIndexIsOn="0" />
+      <div class="details-img">
+        <ul>
+          <li>
+            <img class='details-imgs' src="../../assets/images/shop.jpg" alt="">
+          </li>
+        </ul>
+      </div>
+
     </div>
     <div class="review">
-      <DetailsSortNav @jumptoWhich="whichOne"  ref="REVIEW" :currentIndexIsOn="1" />
-      <Review/>
+      <DetailsSortNav @jumptoWhich="whichOne" ref="REVIEW" :currentIndexIsOn="1" />
+      <Review />
     </div>
     <div class="q_a">
-      <DetailsSortNav @jumptoWhich="whichOne"  ref="Q_A" :currentIndexIsOn="2" />
-      <QA/>
+      <DetailsSortNav @jumptoWhich="whichOne" ref="Q_A" :currentIndexIsOn="2" />
+      <QA />
     </div>
-    <div class="return_delivery"> 
-      <DetailsSortNav @jumptoWhich="whichOne"  ref="RETURN_DELIVERY" :currentIndexIsOn="3" />
-      <ReturnDelivery/>
+    <div class="return_delivery">
+      <DetailsSortNav @jumptoWhich="whichOne" ref="RETURN_DELIVERY" :currentIndexIsOn="3" />
+      <ReturnDelivery />
     </div>
 
   </div>
 </template>
 
-<script > 
+<script >
 import Vue from 'vue'
 import { gaingetSkuDetail, gaingetSpuDetail } from '@/api/detail.js'
-import { addShopCar, deleteShopCar } from '../../api/shopcar';
+import { addShopCar, deleteShopCar } from '../../api/shopcar'
+import {DetailsSortNav} from './childComps/DetailsSortNav/DetailsSortNav.vue'
+import {ReturnDelivery} from './childComps/ReturnDelivery/ReturnDelivery.vue'
+import {QA} from './childComps/QA/QA.vue'
+import {Review} from './childComps/Review/Review.vue'
+import{Details} from './childComps/Details/Details.vue'
+
+
 export default {
   name: "Details",
-    components:{
-      DetailsSortNav,
-      ReturnDelivery,
-       QA,
-      Review,
-      Details,
-   },
+  components: {
+    DetailsSortNav,
+    ReturnDelivery,
+    QA,
+    Review,
+    Details,
+  },
   props: ['id'],
   data() {
     return {
@@ -130,12 +137,10 @@ export default {
       ShopSpuDetail: '',//数据详情信息
       ShopSkuDetail: '',//数据详情信息
       ShopSkuDetail_Tu: [],
-      amplifier_tu:'',//点击切换图片
+      amplifier_tu: '',//点击切换图片
       num: 1,
       params: [], // 所有样式
-      paramsCar:'',//当前选择商品样式
-
-
+      paramsCar: '',//当前选择商品样式
     }
   },
   methods: {
@@ -194,38 +199,38 @@ export default {
         // console.log(this.params);
         console.log('ShopSkuDetail_Tu------', this.ShopSkuDetail_Tu);
         // console.log('ShopSkuDetail_Tu------', this.ShopSkuDetail_Tu[0]);
-          this.amplifier_tu= this.ShopSkuDetail_Tu[0]
-          this.paramsCar = this.params[0]
+        this.amplifier_tu = this.ShopSkuDetail_Tu[0]
+        this.paramsCar = this.params[0]
       })
     },
-    amplifier(item,index){
+    amplifier(item, index) {
       this.amplifier_tu = item;
       console.log(index);
       this.paramsCar = this.params[index];
-      
+
     },
     joinCar() {
-        let customer_id = this.$store.state.user.customer_id
-        let params = this.paramsCar;
-        let num = this.num;
-        let sku_id = this.ShopSkuDetail.id;
-       console.log('添加购物车参数--------',customer_id,sku_id,num,params);
-       let data={
-          customer_id,sku_id,num,params,
-       }
-        addShopCar(data).then(data=>{
-            if (data.code == 200) {
-              this.$message({
-                message:'添加购物车成功',
-                type:'success',
-              })
-            }else{
-               this.$message({
-                message:'添加购物车失败',
-                type:'error',
-              })
-            }
-        })
+      let customer_id = this.$store.state.user.customer_id
+      let params = this.paramsCar;
+      let num = this.num;
+      let sku_id = this.ShopSkuDetail.id;
+      console.log('添加购物车参数--------', customer_id, sku_id, num, params);
+      let data = {
+        customer_id, sku_id, num, params,
+      }
+      addShopCar(data).then(data => {
+        if (data.code == 200) {
+          this.$message({
+            message: '添加购物车成功',
+            type: 'success',
+          })
+        } else {
+          this.$message({
+            message: '添加购物车失败',
+            type: 'error',
+          })
+        }
+      })
     }
   },
   created() {
@@ -235,15 +240,17 @@ export default {
 
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 * {
   box-sizing: border-box;
+  list-style: none;
 }
 
 #detail {
   width: 1240px;
   height: 100%;
   margin: 0 auto;
+  margin-top: 30px;
 }
 
 .back_or_forward {
@@ -484,7 +491,8 @@ export default {
   width: 150px;
   left: 0px;
   height: 100%;
-overflow:scroll;
+  overflow: scroll;
+
   // border:1px solid #333;
   img {
     width: 100px;
