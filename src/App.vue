@@ -8,7 +8,7 @@
         <!-- <Coupon /> -->
         <!-- <Login key="show"></Login> -->
         <router-view :key="$route.fullpath" />
-         <FooterNav></FooterNav>
+         <FooterNav class="FooterNav"></FooterNav>
     </div>
 </template>
 <script>
@@ -58,5 +58,9 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="less" scoped>
+.FooterNav{
+    position: absolute;
+    bottom: 0px;
+}
 </style>

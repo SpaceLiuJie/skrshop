@@ -10,7 +10,6 @@
             <div class="top"> 查询 </div>
             <div class="top"> 客户反馈 </div>
         </div>
-<<<<<<< HEAD
         <div class="box">
             <div class="seach">
                 <div class="searchbox">
@@ -200,14 +199,6 @@
                     </p>
                 </div>
             </div>
-=======
-        <div class="centertop">
-            <div class="top"> 常见问题 </div>
-            <div class="top"> 消息 </div>
-            <div class="top"> 会员福利 </div>
-            <div class="top"> 查询 </div>
-            <div class="top"> 客户反馈 </div>
->>>>>>> 16d3eb0ff30b7bb41ce0d5683fd625294bec3db1
         </div>
     </div>
 </template>
@@ -219,24 +210,12 @@ export default {
 };
 </script>
 
-<<<<<<< HEAD
 <style lang="less" scoped>
-=======
-<style scoped>
->>>>>>> 16d3eb0ff30b7bb41ce0d5683fd625294bec3db1
 * {
     cursor: pointer;
 }
 
-<<<<<<< HEAD
-.problem {
-    width: 78%;
-    margin: 20px auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
+    // justify-content: space-around;
 .pro_left,
 .pro_right {
     width: 50%;
@@ -444,8 +423,7 @@ export default {
     border-bottom: 1px solid black;
 }
 
-=======
->>>>>>> 16d3eb0ff30b7bb41ce0d5683fd625294bec3db1
+
 .title {
     width: 25%;
     padding-top: 20px;
@@ -478,7 +456,6 @@ export default {
     margin-left: 4%;
     padding-top: 10px;
 }
-<<<<<<< HEAD
 
 .box {
     width: 1020px;
@@ -500,6 +477,4 @@ export default {
     outline: 1px solid black;
     background-color: black;
 }
-=======
->>>>>>> 16d3eb0ff30b7bb41ce0d5683fd625294bec3db1
 </style>
