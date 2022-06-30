@@ -8,7 +8,7 @@
         <!-- <Coupon /> -->
         <!-- <Login key="show"></Login> -->
         <router-view :key="$route.fullpath" />
-         <FooterNav class="FooterNav"></FooterNav>
+         <!-- <FooterNav class="FooterNav"></FooterNav> -->
     </div>
 </template>
 <script>
