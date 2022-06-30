@@ -134,8 +134,10 @@ export default {
               break;
             }
           }
-          console.log(data.data);
+          console.log('shopCar数据',data.data);
           this.shopCar = data.data;
+          let shopCarlength = this.shopCar.length
+          this.$bus.$emit('shopCarlength',shopCarlength)
         }
       });
     },

@@ -69,7 +69,7 @@
       </div>
     </div>
 
-    <div class="details">
+    <!-- <div class="details">
       <DetailsSortNav @jumptoWhich="whichOne" ref="DETAILS" :currentIndexIsOn="0" />
       <div class="details-img">
         <ul>
@@ -79,8 +79,8 @@
         </ul>
       </div>
 
-    </div>
-    <div class="review">
+    </div> -->
+    <!-- <div class="review">
       <DetailsSortNav @jumptoWhich="whichOne" ref="REVIEW" :currentIndexIsOn="1" />
       <Review />
     </div>
@@ -91,7 +91,7 @@
     <div class="return_delivery">
       <DetailsSortNav @jumptoWhich="whichOne" ref="RETURN_DELIVERY" :currentIndexIsOn="3" />
       <ReturnDelivery />
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -110,11 +110,11 @@ import{Details} from './childComps/Details/Details.vue'
 export default {
   name: "Details",
   components: {
-    DetailsSortNav,
-    ReturnDelivery,
-    QA,
-    Review,
-    Details,
+    // DetailsSortNav,
+    // ReturnDelivery,
+    // QA,
+    // Review,
+    // Details,
   },
   props: ['id'],
   data() {

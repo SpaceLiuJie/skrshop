@@ -280,6 +280,7 @@ export default {
     },
     getShopDetail() {
       var arr = this.$store.state.shopcarSet.shopcarSet;
+      console.log('arr',arr);
       console.log(this.$store.state.shopcarSet.shopcarSet);
       // console.log(this.$store.state.shopcarSet.order);
       // for (let i = 0; i < arr.length; i++) {
