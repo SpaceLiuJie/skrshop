@@ -30,7 +30,7 @@ export function getShopCar(option) {
  
  // 增加
  export function addShopCar(option) {
-     // id
+     //customer_id
      return request({
          url: '/shopCar/addShopCar',
          method: 'post',
@@ -64,6 +64,7 @@ export function payOrder(option) {
     })
 }
 
+// dddd
 // 更新订单
 export function updateOrder(option) {
     // store_id, customer_id, money, skus, code

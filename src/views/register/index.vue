@@ -1,34 +1,25 @@
 <template>
-    <div class="register">
-        <div id="title">
-            <h1 class="title">注册</h1>
-        </div>
-
-    </div>
+  <div class="signup">  
+    <!-- 注册大标题 -->
+    <title-warp>注册</title-warp>
+    <!-- 注册主体内容 -->
+    <JoinMember/>
+  </div>
 </template>
 
 <script>
+import TitleWarp from '@/components/login-register/TitleWarp.vue';
+import JoinMember from './childrenCompschildrenComps/JoinMember.vue';
 export default {
-    name: 'Signup',
-
+  components: { TitleWarp,JoinMember },
+  name: "Signup",
 };
 </script>
 
-<style scoped>
-.pagetitle {
-    width: 1240px;
-    margin: 0 auto;
-}
-
-#title {
-    width: 25%;
-    margin: 0 auto;
-}
-
-.title {
-    font-size: 44px;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.85);
-    font-weight: 500;
+<style lang="less" scoped>
+.signup {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2.6vw;
 }
 </style>
