@@ -8,9 +8,14 @@
             </div>
             <div class="ipt">
                 <input type="text" placeholder="潮流,从搜索开始" v-model="search_content">
-                <button @click="search">搜索</button>
+                <span @click="search"><svg t="1656586956214" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2167" width="200" height="200">
+                        <path
+                            d="M1005.312 914.752l-198.528-198.464A448 448 0 1 0 0 448a448 448 0 0 0 716.288 358.784l198.4 198.4a64 64 0 1 0 90.624-90.432zM448 767.936A320 320 0 1 1 448 128a320 320 0 0 1 0 640z"
+                            fill="#262626" p-id="2168"></path>
+                    </svg></span>
             </div>
-            <div class="navBag">
+            <div class="navBag ">
                 <div class="registerDiv" @click="LOGINOUT">
                     <p><svg t="1656339584889" class="icon" viewBox="0 0 1024 1024" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" p-id="23891" width="200" height="200">
@@ -49,7 +54,7 @@
                         </svg>
                     </p>
                     <!-- <p></p><span class="shopCar">购物车</span> -->
-                    <p>0</p>
+                    <p>{{ shopCa_length }}</p>
                 </div>
             </div>
 
@@ -71,7 +76,8 @@
                                 @click="twolevl(twoSort)">{{ twoSort }}</li>
                         </ul>
                         <div class="oneSortDivShow">
-                            <div id="oneSortDivShowItem" v-for="(oneSortTu,index) in oneSortDivShow" :key="index" @click="detail(oneSortTu)">
+                            <div id="oneSortDivShowItem" v-for="(oneSortTu, index) in oneSortDivShow" :key="index"
+                                @click="detail(oneSortTu)">
                                 <img :src="oneSortTu.img" alt="">
                                 <p>{{ oneSortTu.title }}</p>
                                 <p><span>www.stride.fun</span></p>
@@ -104,7 +110,8 @@
 <script>
 import { onefiyAdd, twofiyAdd, onefiyAddDetail, twofiyAddDetail } from '../api/Home_page_navigation/classfiy.js'
 // import {gainShopDetail} from '../api/detail.js'
-export default { 
+import { getShopCar, deleteShopCar, addShopCar } from "@/api/shopcar.js";
+export default {
     name: 'Title',
     data() {
         return {
@@ -116,6 +123,7 @@ export default {
             count: 0, // 为1时清空 twoLinked_Data
             search_content: '',//搜索内容
             oneSortDivShow: [],//一级导航数据
+            shopCa_length: 0,//购物车长度
         }
     },
     methods: {
@@ -166,16 +174,16 @@ export default {
             });
             this.count = 1;
             console.log('----', this.twoLinked_Data);
-             onefiyAddDetail(parent_name).then((data) => {
+            onefiyAddDetail(parent_name).then((data) => {
                 console.log(data.res);
                 this.oneSortDivShow = data.res;
                 console.log("一级商品数据", data);
-                console.log(this.oneSortDivShow );
+                console.log(this.oneSortDivShow);
             })
         },
         empty() {
             this.twoLinked_Data = []; //清空一级导航下分类数组
-            this.oneSortDivShow= []; //清空一级导航数据渲染数组
+            this.oneSortDivShow = []; //清空一级导航数据渲染数组
         },
         twolevl(twoSort_name) {
             this.$router.push(`/twolevl/${twoSort_name}`);
@@ -205,18 +213,40 @@ export default {
             this.$store.dispatch("removeuser") //清空本地记录
             this.$router.push(`/login`)
         },
-        detail(shopDetail){   // 点击跳转到商品详情
-            console.log('-----------------------------------------------',shopDetail);
+        detail(shopDetail) {   // 点击跳转到商品详情
+            console.log('-----------------------------------------------', shopDetail);
             this.$router.push(`/detail/${shopDetail.id}`);
-            this.$router.go(0)
-        }
+            // this.$router.go(0)
+        },
+        getShopCar() {
+            // Id用户得id
+            let customer_id = this.$store.state.user.customer_id;
+            let data = {
+                customer_id,
+            };
+            getShopCar(data).then((data) => {
+                console.log(data);
+                let shopCar = data.data;
+                this.shopCa_length = shopCar.length
+
+
+            });
+        },
 
 
     },
+    created(){
+        this.getShopCar() 
+    },
     mounted() {
         console.log('123');
-        this.classfiyAddFoot()
-        window.addEventListener('scroll', this.watchScroll)
+        this.classfiyAddFoot();
+        window.addEventListener('scroll', this.watchScroll);
+        this.$bus.$on('shopCarlength', shopCarlength => {
+            console.log('bus执行', shopCarlength);
+
+            this.shopCa_length = shopCarlength
+        })
     },
     destroyed() {
         // 移除事件监听
@@ -260,11 +290,16 @@ export default {
 
 .ipt {
     border-bottom: 2px solid #333;
-    width: 387px;
+    width: 375px;
     top: 10px;
     float: left;
     margin-left: 325px;
     margin-top: 12px;
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
 
 }
 
@@ -276,8 +311,10 @@ export default {
 
 }
 
-.ipt input:active {
+.ipt input:focus{
     border: 0px solid #fff;
+    border: none;
+    outline: none;
 }
 
 .ipt button {
@@ -496,32 +533,35 @@ export default {
         display: flex;
         justify-content: flex-start;
         flex-wrap: nowrap;
+
         // border:1px solid #333;
         #oneSortDivShowItem {
             width: 140px;
             height: 250px;
             margin-left: 15px;
-            border:1px solid #333;
+            border: 1px solid #333;
 
             img {
                 width: 135px;
                 height: 173px;
             }
+
             p {
                 overflow: none;
                 line-height: 20px;
                 color: #333;
-               overflow: hidden; 
-               padding-top: 5px;
-               text-overflow:ellipsis; 
-               white-space: nowrap;
-               span{
+                overflow: hidden;
+                padding-top: 5px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                span {
                     color: #999;
                     font-size: 14px;
-               }
+                }
             }
         }
-    
+
     }
 
 }
@@ -538,7 +578,7 @@ export default {
     width: 130px;
     line-height: 25px;
     margin: 5px 10px;
-    
+
 }
 
 .twoSort_hover:hover {
@@ -551,5 +591,4 @@ export default {
     justify-content: center;
     float: right;
 }
-
 </style>>

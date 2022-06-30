@@ -2,7 +2,7 @@
     <div class="home">
         <!-- <Nav></Nav> -->
         122222
-        <router-view :key="$route.fullpath"/>
+        <router-view :key="$route.fullpath" />
     </div>
 </template>
 <script>
@@ -12,8 +12,12 @@ export default {
     name: "Home",
     components: {
         Nav,
-    }
-
-
+    },
+    methods: {
+       
+    },
+    created() {
+       
+    },
 }
 </script>

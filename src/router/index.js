@@ -128,6 +128,7 @@ const routes = [
 
 const router = new VueRouter({
   routes,
+  linkActiveClass: 'is-active',
 })
 
 const VueRouterPush = VueRouter.prototype.push

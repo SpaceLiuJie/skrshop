@@ -91,6 +91,7 @@ body {
 .swiper {
   width: 100%;
   height: 45vw;
+  // position: absolute;
   .swiper-slide {
     position: relative;
     width: 100%;

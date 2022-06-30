@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Nav v-show="Navshow"></Nav>
+        <Nav ></Nav>
         <!-- <div>
             <router-link to="/home">Home1</router-link>
         </div> -->
@@ -8,7 +8,7 @@
         <!-- <Coupon /> -->
         <!-- <Login key="show"></Login> -->
         <router-view :key="$route.fullpath" />
-         <FooterNav class="FooterNav"></FooterNav>
+         <FooterNav></FooterNav>
     </div>
 </template>
 <script>
@@ -59,8 +59,11 @@ export default {
 
 
 <style lang="less" scoped>
-.FooterNav{
-    position: absolute;
-    bottom: 0px;
-}
+// .FooterNav{
+//     position: absolute;
+//     bottom: 0px;
+// }
+// .is-active{
+//     background: green;
+// }
 </style>

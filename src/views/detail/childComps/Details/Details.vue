@@ -17,9 +17,11 @@ export default {
       imgs: Array
     }
 }
-</script>
+</script >
 
-<style>
+<style lang="less" scoped>
+
+</style>>
 .details-img{
     width: 1240px;
     margin: 0 auto;

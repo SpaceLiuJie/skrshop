@@ -4,11 +4,7 @@
             <span id="title">营销联盟</span>
         </div>
         <div class="img">
-<<<<<<< HEAD
             <img src="../../../assets/images/footerNav/img_marketing.jpg">
-=======
-            <img src="../../../assets/images/img_marketing.jpg">
->>>>>>> 16d3eb0ff30b7bb41ce0d5683fd625294bec3db1
         </div>
     </div>
 </template>
