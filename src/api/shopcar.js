@@ -20,7 +20,7 @@ export function getShopCar(option) {
  export function deleteShopCar(option) {
      // id
      return request({
-         url: 'http://127.0.0.1:3000/shopCar/deleteShopCar',
+         url: '/shopCar/deleteShopCar',
          method: 'post',
          data: {
              ...option,
@@ -30,9 +30,9 @@ export function getShopCar(option) {
  
  // 增加
  export function addShopCar(option) {
-     // id
+     //customer_id
      return request({
-         url: 'http://127.0.0.1:3000/shopCar/addShopCar',
+         url: '/shopCar/addShopCar',
          method: 'post',
          data: {
              ...option,
@@ -44,7 +44,7 @@ export function getShopCar(option) {
 export function addOrder(option) {
     // store_id, customer_id, money, skus, code
     return request({
-        url: 'http://127.0.0.1:3000/order/addOrder',
+        url: '/order/addOrder',
         method: 'post',
         data: {
             ...option,
@@ -56,7 +56,7 @@ export function addOrder(option) {
 export function payOrder(option) {
     // store_id, customer_id, money, skus, code
     return request({
-        url: 'http://127.0.0.1:3000/order/payOrder',
+        url: '/order/payOrder',
         method: 'post',
         data: {
             ...option,
@@ -68,7 +68,7 @@ export function payOrder(option) {
 export function updateOrder(option) {
     // store_id, customer_id, money, skus, code
     return request({
-        url: 'http://127.0.0.1:3000/order/updateOrder',
+        url: '/order/updateOrder',
         method: 'post',
         data: {
             ...option,

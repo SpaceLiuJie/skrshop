@@ -113,9 +113,8 @@ export default {
       let data = {
         customer_id,
       };
-
+        
       getShopCar(data).then((data) => {
-        // console.log(data);
         // if(data.length<=0){
         //   console.log('购物车为空');
         //   return;
