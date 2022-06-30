@@ -215,7 +215,14 @@ export default {
     cursor: pointer;
 }
 
-    // justify-content: space-around;
+.problem {
+    width: 78%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .pro_left,
 .pro_right {
     width: 50%;
@@ -422,7 +429,6 @@ export default {
     margin: 20px auto;
     border-bottom: 1px solid black;
 }
-
 
 .title {
     width: 25%;

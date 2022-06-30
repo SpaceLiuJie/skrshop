@@ -279,8 +279,8 @@ export default {
       });
     },
     getShopDetail() {
-      var arr = this.$store.state.shopcarSet.shopcarSet;
-      console.log(this.$store.state.shopcarSet.shopcarSet);
+      var arr = this.$store.state.shopcarSet.shopcarSet || this.$store.state.shopcarSet.order ;
+      // console.log(this.$store.state.shopcarSet.shopcarSet);
       // console.log(this.$store.state.shopcarSet.order);
       // for (let i = 0; i < arr.length; i++) {
       //   console.log(arr[i].params);
