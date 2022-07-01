@@ -3,21 +3,38 @@
     <div class="title">
       <p>最好的</p>
     </div>
-    
+    <div class="topSelect">
+      <table-item @tabItem="getTab"></table-item>
+      <Render :getmsg="msg" />
+    </div>
   </div>
 </template>
 
 <script>
+import TableItem from "./childComps/TableItem.vue";
+import Render from "./childComps/Render.vue";
 export default {
+  components: {
+    TableItem,
+    Render,
+  },
   name: "MyBest",
+  data() {
+    return {
+      msg: "All",
+    };
+  },
+  methods: {
+    getTab(val) {
+      this.msg = val;
+    },
+  },
 };
 </script>
 
 <style lang="less" scoped>
 #best {
   font-size: 20px;
-  width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -31,6 +48,11 @@ export default {
       margin: 60px 0px 20px;
       font-weight: 100;
     }
+  }
+  .topSelect {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 10px auto;
   }
 }
 </style>
