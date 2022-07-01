@@ -7,47 +7,20 @@
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <div class="contentRight">
-            <div class="box">
-                <img class="boxbot"
-                    src="https://img.fishfay.com/shopgoods/1/952129114/zt-952129114/0c876180e87434125c9fd4ffb5a3d443.jpg">
-                <div class="boxbottitle">安踏男服史努比联名短袖短T恤2021新款短t</div>
-                <div class="boxbotlink">www.stride.fun </div>
-            </div>
-            <div class="box">
-                <img class="boxbot"
-                    src="https://img.fishfay.com/shopgoods/1/962129145/zt-962129145/1145f56b1d6fc949a374ec04a3c7b027.jpg">
-                <div class="boxbottitle">安踏女服史努比联名短袖短T恤2021新款短t</div>
-                <div class="boxbotlink">www.stride.fun </div>
-            </div>
-            <div class="box">
-                <img class="boxbot"
-                    src="https://img.fishfay.com/shopgoods/1/962129781/zt-962129781/2dbb7381730a98c8e1b56192979571d7.jpg">
-                <div class="boxbottitle">安踏女裤史努比联名针织短裤2021新款</div>
-                <div class="boxbotlink">www.stride.fun </div>
-            </div>
-            <div class="box">
-                <img class="boxbot"
-                    src="https://img.fishfay.com/shopgoods/1/952129115/zt-952129115/42f3719b093b02fd31cbea1def05de64.jpg">
-                <div class="boxbottitle">安踏男服史努比联名短袖短T恤2021新款短t</div>
-                <div class="boxbotlink">www.stride.fun </div>
-            </div>
-            <div class="box">
-                <img class="boxbot"
-                    src="https://img.fishfay.com/shopgoods/1/952129111/zt-952129111/064daa642595010c8ff53672becc7cb6.jpg">
-                <div class="boxbottitle">安踏男服史努比联名短袖短T恤2021新款短t</div>
-                <div class="boxbotlink">www.stride.fun </div>
-            </div>
-            <div class="box">
-                <img class="boxbot"
-                    src="https://img.fishfay.com/shopgoods/1/962129144/zt-962129144/bccb0dd965d618fb19eb2fb72e9969b7.jpg">
-                <div class="boxbottitle">安踏女服史努比联名短袖短T恤2021新款短t</div>
-                <div class="boxbotlink">www.stride.fun </div>
+        <div class="render">
+            <div class="contentNeed">
+                <div hoverable class="needContent" v-for="(item, index) in wantneedList" :key="index"
+                    @click="detail(item)">
+                    <img class="contentImg" alt="example" :src="item.img" />
+                    <p class="front">{{ item.title }}</p>
+                    <p class="website">www.stride.fun</p>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import { getTypeOneList } from '../../../../api/exclusive.js'
 export default {
     name: 'Eventtop',
     data() {
@@ -58,12 +31,24 @@ export default {
                 "//img.fishfay.com/shopgoods/1/952129113/zt-952129113/9c2d3fce8dd7d7b6d92d85dc3d1d6b96.jpg",
                 "//img.fishfay.com/shopgoods/1/952129782/zt-952129782/64e21b95a84a85e780891d7bafb82cdf.jpg",
             ],
+            wantneedList: [],
         }
     },
     methods: {
-
+        async getTypeOneList() {
+            const { res } = await getTypeOneList("服饰");
+            this.want = res.slice(261, 263);
+            this.wantn = this.want.concat(res.slice(265, 266))
+            this.wantneed = this.wantn.concat(res.slice(267, 269))
+            this.wantneedList = this.wantneed.concat(res.slice(271, 272))
+        },
+        detail(item) {
+            this.$router.push(`/detail/${item.id}`);
+        },
+    },
+    created() {
+        this.getTypeOneList();
     }
-
 };
 </script>
 
@@ -84,13 +69,13 @@ export default {
     margin-top: 5px;
 }
 
-.contentRight {
+.render {
     width: 492px;
     height: 912px;
     float: left;
 }
 
-.box {
+.needContent {
     width: 193px;
     height: 294px;
     float: left;
@@ -98,20 +83,20 @@ export default {
     outline: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.box:hover {
+.needContent:hover {
     outline: 2px solid rgba(67, 11, 235, 0.4);
     position: relative;
     top: -7px;
     box-shadow: 0px 10px 10px #bfbbb3;
 }
 
-.boxbot {
+.contentImg {
     width: 193px;
     height: 193px;
     margin: 5px 10x 5px 10px;
 }
 
-.boxbottitle {
+.front {
     width: 145px;
     height: 24px;
     margin: 20px auto;
@@ -123,7 +108,7 @@ export default {
     text-overflow: ellipsis;
 }
 
-.boxbotlink {
+.website {
     width: 145px;
     height: 21px;
     margin: 5px auto;

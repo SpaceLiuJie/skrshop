@@ -11,7 +11,8 @@
         </div>
         <div class="wantcontent">
             <div class="contentNeed">
-                <div hoverable class="needContent" v-for="(item, index) in wantneedList" :key="index">
+                <div hoverable class="needContent" v-for="(item, index) in wantneedList" :key="index"
+                    @click="detail(item)">
                     <img class="contentImg" alt="example" :src="item.img" />
                     <p class="front">{{ item.title }}</p>
                     <p class="website">www.stride.fun</p>
@@ -41,7 +42,10 @@ export default {
         async getTypeOneList() {
             const { res } = await getTypeOneList("服饰");
             this.wantneedList = res.slice(213, 221);
-        }
+        },
+        detail(shopDetail) {
+            this.$router.push(`/detail/${shopDetail.id}`);
+        },
     },
     created() {
         this.getTypeOneList();
