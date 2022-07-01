@@ -1,23 +1,26 @@
 <template>
     <div class="home">
         <!-- <Nav></Nav> -->
-        122222
-        <router-view :key="$route.fullpath" />
+     
+        <index />
+        <router-view :key="$route.fullpath"/>
     </div>
 </template>
 <script>
 import Nav from '../../components/Nav.vue'
-
+import index from './index.vue'
 export default {
     name: "Home",
     components: {
         Nav,
+        index 
+    }
     },
     methods: {
-       
+
     },
     created() {
-       
+
     },
 }
 </script>
