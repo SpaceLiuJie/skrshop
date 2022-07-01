@@ -15,12 +15,14 @@ import AddressForm from '@/components/addressForm/index.js'
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import Bus from '@/utils/bus.js'
 Vue.use(ShopItem);
 Vue.use(AddressForm);
 
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
+Vue.prototype.$bus = Bus
 
 
 new Vue({

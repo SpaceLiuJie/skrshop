@@ -55,7 +55,7 @@
         },
     }
 </script>
-<style lang="less">
+<style lang="less" scoped>
     .paySuccess {
         height: 470px;
 

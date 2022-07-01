@@ -122,12 +122,18 @@ const routes = [
     path: '/paySuccess',
     name: 'PaySuccess',
     component: () => import('@/views/paySuccess/PaySuccess.vue'),
+  },
+  {//best页面
+    path: '/myBest',
+    name: 'MyBest',
+    component: () => import('@/views/best/MyBest.vue'),
   }
 ]
 
 
 const router = new VueRouter({
   routes,
+  linkActiveClass: 'is-active',
 })
 
 const VueRouterPush = VueRouter.prototype.push

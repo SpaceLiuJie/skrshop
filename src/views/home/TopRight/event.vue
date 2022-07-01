@@ -4,19 +4,28 @@
             <span id="title">EVENT</span>
         </div>
         <eventtop />
+        <benefit />
+        <hotkey />
+        <allshop />
     </div>
 </template>
 <script>
 import eventtop from './eventcontent/eventtop.vue'
+import benefit from './eventcontent/benefit.vue'
+import hotkey from './eventcontent/hotkey.vue'
+import allshop from './eventcontent/allshop.vue'
 export default {
     name: 'Event',
     components: {
         eventtop,
+        benefit,
+        hotkey,
+        allshop,
     }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .title {
     width: 45px;
     margin: 10px auto;

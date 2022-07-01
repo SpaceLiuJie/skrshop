@@ -15,7 +15,12 @@ export default {
         Nav,
         index 
     }
+    },
+    methods: {
 
+    },
+    created() {
 
+    },
 }
 </script>
