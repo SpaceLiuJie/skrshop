@@ -1,36 +1,46 @@
 <template>
-    <div class="talking">
+    <div class="edition">
         <div class="title">
             <span id="title">TALKING</span>
         </div>
-        <div class="ImgBot">
-            <div class="TalkImg">
-                <img class="BotImg"
-                    src="https://img.fishfay.com/shopgoods/1/952129110/zt-952129110/f23a9ce7759483b30a2005c5d1c9db4f.jpg">
-                <p class="talkImgTitle">安踏男服史努比联名短袖短T恤2021新款短t</p>
-                <p class="talkImgNet">www.stride.fun</p>
-            </div>
-            <div class="TalkImg">
-                <img class="BotImg"
-                    src="https://img.fishfay.com/shopgoods/1/962129143/zt-962129143/ed512bd9340a060a6aa7d44411ecad3b.jpg">
-                <p class="talkImgTitle">安踏女服史努比联名短袖短T恤2021新款短t</p>
-                <p class="talkImgNet">www.stride.fun</p>
-            </div>
-            <div class="TalkImg">
-                <img class="BotImg" src="https://img.fishfay.com/shopgoods/1/152030609/zt-152030609.jpg">
-                <p class="talkImgTitle">冬奥特许商品国旗款国旗青年梭织套头衫</p>
-                <p class="talkImgNet">www.stride.fun</p>
+        <div class="render">
+            <div class="contentNeed">
+                <div hoverable class="needContent" v-for="(item, index) in wantneedList" :key="index"
+                    @click="detail(item)">
+                    <img class="contentImg" slot="over" alt="example" :src="item.img" />
+                    <p class="front">{{ item.title }}</p>
+                    <p class="website">www.stride.fun</p>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { getTypeOneList } from '../../../../api/exclusive.js'
 export default {
     name: 'Talking',
+    data() {
+        return {
+            wantneedList: [],
+        }
+    },
+    methods: {
+        async getTypeOneList() {
+            const { res } = await getTypeOneList("服饰");
+            this.want = res.slice(263, 264);
+            this.wantneed = this.want.concat(res.slice(266, 267))
+            this.wantneedList = this.wantneed.concat(res.slice(252, 253))
+        },
+        detail(item) {
+            this.$router.push(`/detail/${item.id}`);
+        },
+    },
+    created() {
+        this.getTypeOneList();
+    }
 
-
-};
+}
 </script>
 
 <style scoped>
@@ -55,13 +65,21 @@ export default {
     font-weight: 100;
 }
 
-.ImgBot {
+.render {
     width: 1240px;
     height: 501px;
     margin: 10px auto;
 }
 
-.talkImgTitle {
+.needContent {
+    width: 395px;
+    height: 501px;
+    float: left;
+    margin-left: 10px;
+    outline: 1px solid rgb(253, 252, 252);
+}
+
+.front {
     text-align: center;
     margin: 30px 0 22px 0;
     font-family: "yg750";
@@ -70,7 +88,7 @@ export default {
     line-height: normal;
 }
 
-.talkImgNet {
+.website {
     font-family: "yg740";
     font-size: 12px;
     color: #666;
@@ -78,15 +96,7 @@ export default {
     text-align: center;
 }
 
-.TalkImg {
-    width: 395px;
-    height: 501px;
-    float: left;
-    margin-left: 10px;
-    outline: 1px solid rgb(253, 252, 252);
-}
-
-.BotImg {
+.contentImg {
     width: 395px;
     height: 395px;
 }

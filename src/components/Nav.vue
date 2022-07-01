@@ -224,6 +224,7 @@ export default {
             let data = {
                 customer_id,
             };
+            console.log('++++++++12323111++++++++++++++++++++++',data);
             getShopCar(data).then((data) => {
                 console.log(data);
                 let shopCar = data.data;
@@ -235,8 +236,8 @@ export default {
 
 
     },
-    created(){
-        this.getShopCar() 
+    created() {
+        this.getShopCar()
     },
     mounted() {
         console.log('123');
@@ -311,7 +312,7 @@ export default {
 
 }
 
-.ipt input:focus{
+.ipt input:focus {
     border: 0px solid #fff;
     border: none;
     outline: none;

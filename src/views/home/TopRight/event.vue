@@ -7,6 +7,7 @@
         <benefit />
         <hotkey />
         <allshop />
+        <xuanran />
     </div>
 </template>
 <script>
@@ -14,6 +15,7 @@ import eventtop from './eventcontent/eventtop.vue'
 import benefit from './eventcontent/benefit.vue'
 import hotkey from './eventcontent/hotkey.vue'
 import allshop from './eventcontent/allshop.vue'
+import Xuanran from './eventcontent/xuanran.vue'
 export default {
     name: 'Event',
     components: {
@@ -21,6 +23,7 @@ export default {
         benefit,
         hotkey,
         allshop,
+        Xuanran,
     }
 }
 </script>
