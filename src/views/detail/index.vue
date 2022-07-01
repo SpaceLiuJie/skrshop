@@ -103,11 +103,11 @@ import { addShopCar, deleteShopCar } from '../../api/shopcar';
 export default {
   name: "Details",
     components:{
-      DetailsSortNav,
-      ReturnDelivery,
-       QA,
-      Review,
-      Details,
+      // DetailsSortNav,
+      // ReturnDelivery,
+      //  QA,
+      // Review,
+      // Details,
    },
   props: ['id'],
   data() {

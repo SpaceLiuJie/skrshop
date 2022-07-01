@@ -1,14 +1,20 @@
-
 <template>
-  <el-carousel indicator-position="SwiperHreader">
-    <el-carousel-item   v-for="(item,index) in TopSwiper" :key="index">
-      <img
+  <div class="SwiperHreader">
+    <swiper ref="SwiperHreader" :options="SwiperHreader">
+      <swiper-slide v-for="(item, index) in TopSwiper" :key="index" >
+        <img
          @click="swiperClick(index)"
           alt="example"
           :src="item.swiperImg"
         />
-    </el-carousel-item>
-  </el-carousel>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+      　　
+      <div class="swiper-button-prev" slot="button-prev"></div>
+      　　
+      <div class="swiper-button-next" slot="button-next"></div>
+    </swiper>
+  </div>
 </template>
 
 <script>
@@ -16,16 +22,31 @@ export default {
   name: "SwiperHreader",
   data() {
     return {
-      SwiperHreader:{
-         observer: true, //修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true, //修改swiper的父元素时，自动初始化swipe
-      }
-    } ;
+      SwiperHreader: {
+        slidesPerView: 1,
+        loop: true,
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".SwiperHreader .swiper-pagination",
+          clickable: true,
+        },
+          navigation: {
+        nextEl: '.SwiperHreader .swiper-button-next',
+        prevEl: '.SwiperHreader .swiper-button-prev',
+      },
+      },
+    };
   },
   props:{
-    TopSwiper :Array,
-     height:String
-    
+    TopSwiper:{
+      type:Array,
+      
+    }
   },
   methods: {
     swiperClick(index){
@@ -37,23 +58,36 @@ export default {
       }
     }
   },
-
+  computed: {
+    swiper() {
+      return this.$refs.SwiperHreader.$swiper;
+    },
+  },
+  mounted() {
+    this.swiper.slideTo(1, 1000, false);
+  },
 };
 </script>
 
-<style>
-.el-carousel__container{
-  height: 600px;
-  width: 100%;
+<style lang="less" scoped>
+.SwiperHreader {
   position: relative;
-  
+  width: 100%;
+  cursor: pointer;
 }
-  
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-  
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
+.swiper-container {
+  width: 100%;
+}
+.swiper-button-prev {
+  left: 30px;
+   z-index: 999;
+}
+.swiper-button-next {
+  right: 30px;
+}
+.swiper-button-prev,
+.swiper-button-next {
+ 
+  --swiper-theme-color: #ccc; /* 设置Swiper风格 */
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="SwiperList">
-    <swiper ref="SwiperList" :options="SwiperList">
-      <swiper-slide v-for="(item, index) in SwiperList_list.slice(20,28)" :key="index">
+  <div class="SwiperCarousel">
+    <swiper ref="SwiperCarousel" :options="SwiperCarousel">
+      <swiper-slide v-for="(item, index) in SwiperCarousel_list.slice(20,28)" :key="index">
         <div  class="card">
           <img  class="card-img" @click="swiperClick(item.id)" alt="example"  :src="item.img" />
           <br><br><br>
@@ -20,54 +20,54 @@
 </template>
 <script>
 export default {
-  name: "SwiperList",
+  name: "SwiperCarousel",
   data() {
     return {
-      SwiperList: {
-       
-        slidesPerView: 4,
-        spaceBetween: 60,
-        centeredSlides: true,
-     
+      SwiperCarousel: {
+        slidesPerView: 1,
+        spaceBetween: 10,
         observer: true, //修改swiper自己或子元素时，自动初始化swiper
         observeParents: true, //修改swiper的父元素时，自动初始化swiper
-        autoplay: {
-          delay: 1000,
-          disableOnInteraction: false,
-          stopOnLastSlide: true,
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
         },
-        navigation: {
-          nextEl: ".SwiperList .swiper-button-next",
-          prevEl: ".SwiperList .swiper-button-prev",
+      navigation: {
+          nextEl: ".SwiperCarousel .swiper-button-next",
+          prevEl: ".SwiperCarousel .swiper-button-prev",
         },
       },
     };
   },
+
+
   props:{
-    SwiperList_list
-    :Array,
-   
-    },
-  
-  computed: {
-    swiper() {
-      return this.$refs.SwiperList.$swiper;
-    },
+    SwiperCarousel_list
+      :Array,
+      
+    
   },
-  methods: {
+   methods: {
      swiperClick(id){
       this.$router.push(`/detail/${id}`)
-     
     }
   },
-  mounted() {
-    this.swiper.slideTo(2, 1000, false);
-  },
+
 };
 </script>
 
 <style lang="less" scoped>
-.SwiperList {
+.SwiperCarousel {
   position: relative;
   width: 80%;
   margin: 0 auto;
@@ -79,7 +79,7 @@ export default {
 }
 
 .swiper-slide-active {
-  transform: scale(1.2) !important;
+  transform: scale(1) !important;
   flex-shrink: 0;
 }
 .swiper-button-prev {
@@ -98,6 +98,7 @@ export default {
   height: 300px;
   margin: 4px;
 border: 1px solid #e8e8e8;
+
   .card-img {
  width: 129px;
  text-align: center;
