@@ -15,7 +15,7 @@ export default {
         Nav,
         index 
     }
-    },
+    ,
     methods: {
 
     },
