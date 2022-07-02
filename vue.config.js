@@ -59,7 +59,7 @@ module.exports = {
             '/': {
                 // target: 'http://localhost:3000/',
 
-                target: 'http://192.168.205.63:3000/',
+                target: 'http://192.168.205.192:3000/',
                 changeOrigin: true,
                 pathRewrite: {
                     '^/': ''

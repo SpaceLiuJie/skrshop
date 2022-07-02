@@ -2,85 +2,69 @@
     <div class="allshop">
         <div class="tab-btn">
             <ul>
-                <li @click="All">All</li>
-                <li @click="footwear">鞋类</li>
-                <li @click="costume">服饰</li>
-                <li @click="accessories">配件</li>
-                <li @click="Kids">儿童专区</li>
+                <li v-for="(item, index) in btn" :key="index" @click="onbtn(item,index)"
+                    :class="{ btn_bor: avtiveIndex == index ? true : false }">
+                    <button>{{ item }}</button>
+                </li>
             </ul>
             <div class="sort">
                 <ul>
                     <li v-for="(item, index) in sort" :key="index">
-                        <a href="">{{ item }}</a>
+                        <a @click="upthis">{{ item }}</a>
                     </li>
                 </ul>
             </div>
-            <div class="wantcontent">
-                <div class="contentNeed">
-                    <div hoverable class="needContent" v-for="(item, index) in wantneedList" :key="index">
-                        <img class="contentImg" alt="example" :src="item.img" />
-                        <p class="front">{{ item.title }}</p>
-                        <p class="website">www.stride.fun</p>
-                        <div class="price">
-                            <span class="discount_after">{{ item.special_price }}</span>
-                            <span class="discount">{{
-                                    item.price
-                            }}</span>
-                            <span class="percent">{{ parseInt((item.special_price / item.price) * 100) }}%</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="select">
+                <el-select v-model="value" style="width:150px;" size="mini" placeholder=" 진행중 이벤트 ">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { getTypeOneList } from '../../../../api/exclusive.js'
 export default {
     name: 'Allshop',
     data() {
         return {
+            btn: ["All", "鞋类", "服饰", "配件", "儿童专区"],
             sort: ["全部", "收藏", "趋势", "社论", "销售", "事件"],
-            wantneedList: [],
+            avtiveIndex: "0",
+            options: [{
+                label: ' 진행중 이벤트 '
+            }, {
+                label: ' 진행중 이벤트 '
+            }],
+            value: ''
         };
     },
     methods: {
-        All() {
-            getTypeOneList().then(() => {
-                const { res } = getTypeOneList("鞋类");
-                this.wantneedList = res;
-            })
+        onbtn(item,index) {
+            this.$bus.$emit('getdata', item)
+            this.avtiveIndex = index;
+            this.$emit('listTma', this.btn[index])
         },
-        footwear() {
-            getTypeOneList().then(() => {
-                const { res } = getTypeOneList("鞋类");
-                this.wantneedList = res;
-            })
-        },
-        costume() {
-            getTypeOneList().then(() => {
-                const { res } = getTypeOneList("服饰");
-                this.wantneedList = res;
-            })
-        },
-        accessories() {
-            getTypeOneList().then(() => {
-                const { res } = getTypeOneList("配件");
-                this.wantneedList = res;
-            })
-        },
-        Kids() {
-            getTypeOneList().then(() => {
-                const { res } = getTypeOneList("儿童专区");
-                this.wantneedList = res;
-            })
-        },
+        upthis() {
+            this.$router.push("/event")
+        }
     },
+    mounted() {
+
+    },
+    created() {
+
+    }
+
 }
 </script>
 
 <style lang="less" scoped>
+* {
+    cursor: pointer;
+}
+
 .tab-btn {
     width: 100%;
     height: 60px;
@@ -122,9 +106,11 @@ export default {
     .sort {
         display: flex;
         justify-content: space-between;
-        width: 85%;
+        width: 70%;
+        float: left;
         height: 32px;
         margin: 24px auto;
+        margin-left: 60px;
 
         ul {
             display: flex;
@@ -142,6 +128,10 @@ export default {
                     text-decoration: none;
                     transition: color 0.3s;
                     font-size: 14px;
+
+                    &:hover {
+                        color: rgb(238, 9, 9);
+                    }
                 }
             }
 
@@ -150,80 +140,13 @@ export default {
             }
         }
     }
-}
 
-.needContent {
-    height: 246.5px;
-    width: 136.5px;
-    outline: 1px solid rgb(219, 215, 215);
-    margin-left: 15px;
-    float: left;
-}
-
-.needContent:hover {
-    outline: 2px solid rgba(221, 220, 224, 0.4);
-    box-shadow: 0px 3px 3px #e8e6e4;
-}
-
-.contentNeed {
-    width: 1240px;
-    margin: 0 auto;
-}
-
-.needContent {
-    height: 246.5px;
-    width: 136.5px;
-    outline: 1px solid rgb(219, 215, 215);
-    margin-left: 15px;
-    float: left;
-}
-
-.needContent:hover {
-    outline: 2px solid rgba(221, 220, 224, 0.4);
-    box-shadow: 0px 3px 3px #e8e6e4;
-}
-
-.contentImg {
-    width: 136.5px;
-    height: 136.5px;
-}
-
-.front {
-    font-size: 14px;
-    height: 28px;
-    overflow: hidden;
-    color: rgba(0, 0, 0, 0.85);
-    font-weight: 500;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.website {
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.45);
-    height: 15px;
-}
-
-.price {
-    height: 20px;
-}
-
-.discount_after {
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-    padding-right: 15px;
-}
-
-.discount {
-    text-decoration: line-through;
-    color: rgba(0, 0, 0, 0.45);
-    font-size: 14px;
-}
-
-.percent {
-    color: red;
-    font-size: 16px;
-    padding: 35px;
+    .select {
+        width: 150px;
+        height: 20px;
+        margin-right: 80px;
+        margin-top: 30px;
+        float: right;
+    }
 }
 </style>

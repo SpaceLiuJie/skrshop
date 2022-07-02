@@ -2,13 +2,12 @@
 import http from '../utils/request.js'
 // export const getImg = (options) => http.post('/type/getImg', options)
 
-export async function getImg(options) {
-    return await http({
+export function getImg(data) {
+    return http({
         method: "post",
         url: "/type/getImg",
-        responseType: 'blob',
         data: {
-            options
+            ...data
         }
     })
 }

@@ -6,7 +6,10 @@ import './assets/less/a.less'
 import './assets/less/global.less'
 import store from './store'
 
-
+import 'swiper/css/swiper.css'
+// import 'swiper/swiper-bundle.css'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper);
 
 import ShopItem from '@/components/shopItem/index.js'
 import AddressForm from '@/components/addressForm/index.js'
