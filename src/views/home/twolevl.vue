@@ -116,7 +116,7 @@ export default {
     },
     watch: {
         $route: {
-            deep: true, // 深度加你太能干
+            deep: true, // 深度
             handler(to, from) {
                 console.log("---------------------watch route----------------");
                 console.log(to);

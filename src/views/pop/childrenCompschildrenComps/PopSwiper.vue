@@ -52,7 +52,6 @@ export default {
       ]
     };
   },
-  props() {},
   mounted() {
     new Swiper(".mySwiper", {
       effect: "cube",
