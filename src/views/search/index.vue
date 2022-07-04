@@ -85,7 +85,7 @@ export default {
   },
   data() {
     return {
-      word: "安踏",
+      word: "",
       num: "2",
       firstA: "",
       total: "",
@@ -102,13 +102,16 @@ export default {
     getSearchShopList() {
       this.activeShow = false;
       this.showShow = false;
-
-      // let word = this.$route.query.keyword;
-      let word = "安踏";
+      // let word={
+      //   name:this.$store.state.search_val.search_val
+      // }
+      let word = this.$route.params.searItem
       searchShopList(word).then((data) => {
         this.shopList = data.data;
-        console.log(data);
-        this.num = data.data.length;
+        console.log("新",this.shopList);
+        console.log("这个数据",data);
+        // this.num = data.data.length;
+        // this.word =word.name;
       });
     },
     linkDetail(e, shop) {
@@ -132,7 +135,19 @@ export default {
   // },
   created() {
     this.getSearchShopList();
+    console.log("页面创建了");
   },
+  watch:{
+     $route: {
+            deep: true, 
+            handler(to, from) {
+                console.log("---------------------watch route----------------");
+                   this.getSearchShopList();
+
+
+            },
+        },
+  }
 };
 </script>
 
