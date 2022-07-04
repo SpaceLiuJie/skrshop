@@ -16,19 +16,21 @@
         </div>
         <div class="dailyContent">
             <div class="statistics">
-                <div class="count"><span>共计{{ dailyContentTuShow.length }}件</span></div>
+                <shop-page></shop-page>
+                <!-- <div class="count"><span>共计{{ dailyContentTuShow.length }}件</span></div>
                 <div class="countClass">
                     <el-select v-model="options[0].value" placeholder="请选择">
                         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                           
                         </el-option>
                     </el-select>&nbsp;&nbsp;
                     <el-select v-model="value" placeholder="请选择">
                         <el-option v-for="item in optionsPrice" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
-                </div>
+                </div> -->
             </div>
-            <div class="dailyContentTuShow">
+            <!-- <div class="dailyContentTuShow">
                 <div class="dailyContentTuShowList" v-for="(item, index) in dailyContentTuShow" :key="index" @click="ShopDetail(item)">
                     <div class="dailyContentTuShow_content">
                         <img :src="item.img" alt="">
@@ -36,39 +38,43 @@
                         <p>{{ item.price }}</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
 <script>
+import ShopPage from '../home/shopPage/shopPage.vue'
 import { onefiyAdd, twofiyAdd, onefiyAddDetail, twofiyAddDetail } from '../../api/Home_page_navigation/classfiy'
 export default {
     name: "twolevlDetail",
+    components:{
+        ShopPage,
+    },
     data() {
         return {
             twolevl_content: '',
-            count: 0,
-            options: [{
-                value: '选项1',
-                label: '每页30'
-            }, {
-                value: '选项2',
-                label: '每页60'
-            }, {
-                value: '选项3',
-                label: '每页90'
-            }],
-            optionsPrice: [{
-                value: '选项1',
-                label: '价格最高'
-            }, {
-                value: '选项2',
-                label: '价格最低'
-            }, {
-                value: '选项3',
-                label: '销售最高'
-            }],
-            value: '默认',
+            // count: 0,
+            // options: [{
+            //     value: '选项1',
+            //     label: '每页30'
+            // }, {
+            //     value: '选项2',
+            //     label: '每页60'
+            // }, {
+            //     value: '选项3',
+            //     label: '每页90'
+            // }],
+            // optionsPrice: [{
+            //     value: '选项1',
+            //     label: '价格最高'
+            // }, {
+            //     value: '选项2',
+            //     label: '价格最低'
+            // }, {
+            //     value: '选项3',
+            //     label: '销售最高'
+            // }],
+            // value: '默认',
             dailyContentTuShow: [ //今日推荐数据
                 {
                     title: '安踏1',
@@ -95,6 +101,7 @@ export default {
             let Detail = this.$route.params.twolevlDetail;
             twofiyAddDetail(Detail).then(res => { //获取二级商品列表
                 this.dailyContentTuShow = res.data;
+
 
             })
         },
