@@ -13,7 +13,8 @@ export default {
     components: {
         Nav,
         index 
-    },
+    }
+    ,
     methods: {
 
     },
