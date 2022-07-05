@@ -35,3 +35,12 @@ export function setDefaultAddress(option) {
         }
     })
 }
+export function delAddress(option) {
+    return request({
+        url: '/user/deleteAddress',
+        method: 'post',
+        data: {
+            ...option,
+        }
+    })
+}

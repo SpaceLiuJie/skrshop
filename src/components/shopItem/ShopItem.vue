@@ -4,7 +4,7 @@
         <!-- todo 优化提供用户选择是否懒加载
                 提供预定义懒加载图片
         -->
-        <img v-lazy="shop.imgs"  alt="" :style="{height:imgHeight}" >
+        <img v-lazy="shop.img"  alt="" :style="{height:imgHeight}" >
     </div>
     <div class="title">
         <span>商品名称：{{shop.title}}</span>

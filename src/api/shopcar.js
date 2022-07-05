@@ -76,3 +76,16 @@ export function updateOrder(option) {
         }
     })
 }
+
+// dddd
+// 获取订单
+export function getOrder(option) {
+    // sstore_id, page, count
+    return request({
+        url: '/order/getOrder',
+        method: 'post',
+        data: {
+            ...option,
+        }
+    })
+}

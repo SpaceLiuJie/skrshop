@@ -1,8 +1,7 @@
 <template>
     <div class="home">
         <!-- <Nav></Nav> -->
-     
-        <index />
+        <index/>
         <router-view :key="$route.fullpath"/>
     </div>
 </template>

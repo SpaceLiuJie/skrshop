@@ -10,9 +10,11 @@ import {
     login
 } from '../api/login.js'
 import shopcarSet from './modules/shopcarSet.js'
+import addAddress from './modules/addAddress'
 
 Vue.use(Vuex)
 let user = get('user') || {} //请求浏览器本地存储user数据
+
 let store = new Vuex.Store({
     state: {
         user,
@@ -25,7 +27,7 @@ let store = new Vuex.Store({
             state.user = {};
             // remove(user);
             clear();
-        }
+        },
     },
     actions: {
         setUser(store, data) {
@@ -48,10 +50,11 @@ let store = new Vuex.Store({
         removeuser(store) {
             console.log('removeuser yun');
             store.commit('REMOVEUSER')
-        }
+        },
     },
     modules: {
         shopcarSet,
+        addAddress,
     }
 })
 export default store;

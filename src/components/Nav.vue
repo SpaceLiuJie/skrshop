@@ -194,6 +194,9 @@ export default {
             let searItem = this.search_content;
             // console.log('---', searItem);
             this.$router.push(`/search/${searItem}`);
+            // console.log("wdawd",this.search_content);
+            let search_content = this.search_content 
+            // this.$store.dispatch('searchVal',search_content)
             this.search_content = '';
         },
         myself() {
