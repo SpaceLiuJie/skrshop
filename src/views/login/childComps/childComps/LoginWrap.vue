@@ -81,8 +81,8 @@ export default {
         }
       });
       console.log(formName);
-      console.log(this.ruleForm.pass);
-      console.log(this.ruleForm.user);
+      // console.log(this.ruleForm.pass);
+      // console.log(this.ruleForm.user);
       let username = this.ruleForm.user;
       let password = this.ruleForm.pass;
       this.$store.dispatch('setUser', { username, password }).then((res) => {

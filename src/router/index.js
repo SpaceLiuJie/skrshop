@@ -127,7 +127,12 @@ const routes = [
     path: '/myBest',
     name: 'MyBest',
     component: () => import('@/views/best/MyBest.vue'),
-  }
+  },
+  {//onefiy页面
+    path: '/onefiy/:typeone',
+    name: 'Onefiy',
+    component: () => import('../views/onefiy/onefiy.vue'),
+  },
 ]
 
 

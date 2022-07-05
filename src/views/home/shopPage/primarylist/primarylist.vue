@@ -19,8 +19,8 @@
             </div>
         </div>
         <div class="dailyContentTuShow">
-            <div class="dailyContentTuShowList" v-for="(item, index) in TypeOne_init.slice(sliceStart, sliceEnd)" :key="index"
-                @click="ShopDetail(item)">
+            <div class="dailyContentTuShowList" v-for="(item, index) in TypeOne_init.slice(sliceStart, sliceEnd)"
+                :key="index" @click="ShopDetail(item)">
                 <div class="dailyContentTuShow_content">
                     <img :src="item.img" alt="">
                     <p>{{ item.title }}</p>
@@ -29,11 +29,9 @@
             </div>
         </div>
         <div class="page">
-            <el-pagination :current-page="current" :default-current="1" :total="TypeOneLength" :page-Size="thisPageLength"
-                @change="changepage" 
-                layout="prev, pager, next"
-                ></el-pagination>
-               
+            <el-pagination :current-page="current" :default-current="1" :total="TypeOneLength"
+                :page-Size="thisPageLength" @change="changepage" layout="prev, pager, next"></el-pagination>
+
         </div>
     </div>
 </template>
@@ -45,8 +43,8 @@ export default {
             PageLength: ["30", "60", "90"],
             SortChange: ["默认", "价格最高", "价格最低", "销量最高"],
             // 每页条数
-            value1:30,
-            value2:"默认",
+            value1: 30,
+            value2: "默认",
             thisPageLength: 30,
             // 截取条数从第几个开始
             sliceStart: 0,
@@ -67,7 +65,7 @@ export default {
         },
         SortChange_list: {
             type: Array,
-            default:"",
+            default: "",
         },
         // HotSale: {
         //     type: Array,
@@ -76,7 +74,7 @@ export default {
     },
     created() {
         // this.shopitem()
-     },
+    },
     watch: {
         //  $route: {
         //     deep: true, // 深度加你太能干
@@ -90,7 +88,7 @@ export default {
 
         //     },
         // },
-        shop:{
+        shop: {
             deep: true, // 深度加你太能干
             handler(to, from) {
                 // console.log("---------------------watch route----------------");
@@ -98,19 +96,19 @@ export default {
                 // this.twolevlDetail()
                 // // this.getTypeOneShop();
                 // this.twolevlData();
-                 this.shopitem()
-        }
+                this.shopitem()
+            }
         }
     },
     methods: {
-        shopitem(){
+        shopitem() {
             this.TypeOne_init = this.shop;
         },
         // 选择框选择的条数传给每页条数
         handleChangePage(key) {
             this.current = 1;
             this.sliceStart = 0;
-            console.log("key",key);
+            console.log("key", key);
             this.thisPageLength = parseInt(key);
             this.sliceEnd = parseInt(key);
             // this.getTypeOneList_init();
@@ -124,9 +122,9 @@ export default {
         },
         // 点击选择框渲染对应排序数据
         handleChangeType(key) {
-            console.log('key,idex',key,index);
-           let index =  this.SortChange.indexOf(key)
-           console.log("index",index);
+            console.log('key,idex', key, index);
+            let index = this.SortChange.indexOf(key)
+            console.log("index", index);
             console.log(this.SortChange_list);
             this.TypeOne_init = this.SortChange_list[index];
         },
@@ -139,34 +137,57 @@ export default {
 </script>
 
 <style lang="less" scoped>
-        
-.sort{
+.sort {
     display: flex;
     justify-content: space-between;
 }
+
 .dailyContentTuShow {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
 
-        .dailyContentTuShowList {
-            // width: 100%;
+    .dailyContentTuShowList {
+        // width: 100%;
+        // width: 100%;
+        // padding: 0 10px;
+        // display: flex;
+        // text-align: center;
+        // flex-wrap: wrap;
+            text-align: center;
 
 
-            .dailyContentTuShow_content {
-                width: 300px;
-                text-align: center;
+        .dailyContentTuShow_content {
+            // width: calc((100% / 5) - 8px);
+            margin: 10px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 10px;
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 14px;
+            font-variant: tabular-nums;
+            line-height: 1.5;
+            list-style: none;
+            font-feature-settings: 'tnum';
+            position: relative;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+            
+
 
                 img {
-                    width: 293px;
-                    height: 293px;
+                    width: 220px;
+                    height: 220px;
                 }
-            }
         }
     }
-    .page{
-        margin: 0 auto;
-        text-align: center;
-    }
+}
+
+.page {
+    margin: 0 auto;
+    text-align: center;
+}
 </style>

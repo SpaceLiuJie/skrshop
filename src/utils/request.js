@@ -18,7 +18,7 @@ let loadServe = null;
 // let loadServe = null;
 
 instance.interceptors.request.use(config => {
-  console.log('---------123----------', config);
+  // console.log('---------123----------', config);
   // 懒加载
   // loadServe = Loading.service({
   //   lock: true,
