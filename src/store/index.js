@@ -10,7 +10,7 @@ import {
     login
 } from '../api/login.js'
 import shopcarSet from './modules/shopcarSet.js'
-import search_val from './modules/searchVal.js'
+import addAddress from './modules/addAddress'
 
 Vue.use(Vuex)
 let user = get('user') || {} //请求浏览器本地存储user数据
@@ -54,7 +54,7 @@ let store = new Vuex.Store({
     },
     modules: {
         shopcarSet,
-        search_val,
+        addAddress,
     }
 })
 export default store;

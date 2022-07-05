@@ -63,3 +63,16 @@ export async function getAddress(data) {
         }
     })
 }
+
+
+
+
+export async function getUserOrder(customer_id) {
+    return await http({
+        method: "post",
+        url: "/order/getUserOrder",
+        data: {
+            ...customer_id
+        }
+    })
+}

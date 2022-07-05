@@ -78,6 +78,7 @@ export default {
     width: 44px;
     text-align: center;
     font-weight: bolder;
+    margin-left: 100px;
 }
 
 .PersonalDetails {
