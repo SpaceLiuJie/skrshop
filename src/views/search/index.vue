@@ -15,7 +15,7 @@
             style="width: 33%"
             label="产品"
             @click.native="getSearchShopList"
-            >产品({{ productNumber }})</el-radio-button
+            >产品({{ num }})</el-radio-button
           >
           <el-radio-button
             class="product"
@@ -110,8 +110,8 @@ export default {
         this.shopList = data.data;
         console.log("新",this.shopList);
         console.log("这个数据",data);
-        // this.num = data.data.length;
-        // this.word =word.name;
+        this.num = data.data.length;
+        this.word =word;
       });
     },
     linkDetail(e, shop) {
