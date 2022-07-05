@@ -54,20 +54,20 @@
                         </svg>
                     </p>
                     <!-- <p></p><span class="shopCar">购物车</span> -->
-                    <p>{{ shopCa_length }}</p>
+                    <p>{{ shopCar_length }}</p>
                 </div>
             </div>
 
         </div>
         <div class="navtion" :class="{ 'fix-nav': navBarFixed }">
-            <div id="contentNav" class="contentNav">
-                <div class="nacs" v-show="show">
+            <div id="contentNav" class="contentNav" >
+                <div class="nacs" v-show="show" @click="nacs">
                     <img src="data:image/png;base64,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"
                         alt="">
                 </div>
                 <div class="onefiyList">
                     <div class="classfiyAddFoot_item" v-for="oneSort in onefiyList" :key="oneSort"
-                        @mouseenter="twofiyAdd(oneSort)">
+                        @mouseenter="twofiyAdd(oneSort)" @click="classfiyAddFoot_item(oneSort)">
                         {{ oneSort }}
                     </div>
                     <div class="twofiyList" @mouseleave="empty">
@@ -88,7 +88,7 @@
                 <div class="PopDiv" @click="clickPOP"><span>POP</span></div>
                 <div class="exclusiveDiv" @click="clickEXCLUSIVE"><span>EXCLUSIVE</span></div>
                 <div class="eeventDiv" @click="clickEVENT"><span>EVENT</span></div>
-                <div class="bestDiv"><span>BEST</span></div>
+                <div class="bestDiv" @click="BEST"><span>BEST</span></div>
                 <div class="contentNav_right" v-show="show">
 
                     <div class="registerDiv">
@@ -123,7 +123,7 @@ export default {
             count: 0, // 为1时清空 twoLinked_Data
             search_content: '',//搜索内容
             oneSortDivShow: [],//一级导航数据
-            shopCa_length: 0,//购物车长度
+            shopCar_length: 0,//购物车长度
         }
     },
     methods: {
@@ -149,21 +149,21 @@ export default {
             }
         },
         classfiyAddFoot() {
-            console.log(123);
+            // console.log(123);
             onefiyAdd().then((data) => {
-                console.log('一级数据');
+                // console.log('一级数据');
                 this.onefiyList = data.data;
                 this.twofiyList = data.result;
                 // console.log(data.data);
             });
         },
         twofiyAdd(parent_name) {
-            console.log(parent_name);
+            // console.log(parent_name);
             // console.log(this.twofiyList);
             let twoList = this.twofiyList;
             let click_count = this.count
             if (click_count == 1) {
-                console.log('----------');
+                // console.log('----------');
                 this.twoLinked_Data = []; //清空数组
             }
             twoList.forEach(key => {
@@ -175,10 +175,12 @@ export default {
             this.count = 1;
             console.log('----', this.twoLinked_Data);
             onefiyAddDetail(parent_name).then((data) => {
-                console.log(data.res);
+                // console.log(data.res);
                 this.oneSortDivShow = data.res;
-                console.log("一级商品数据", data);
-                console.log(this.oneSortDivShow);
+                // console.log("一级商品数据", data);
+                // console.log(this.oneSortDivShow);
+
+
             })
         },
         empty() {
@@ -217,7 +219,7 @@ export default {
             this.$router.push(`/login`)
         },
         detail(shopDetail) {   // 点击跳转到商品详情
-            console.log('-----------------------------------------------', shopDetail);
+            // console.log('-----------------------------------------------', shopDetail);
             this.$router.push(`/detail/${shopDetail.id}`);
             // this.$router.go(0)
         },
@@ -227,35 +229,58 @@ export default {
             let data = {
                 customer_id,
             };
-            console.log('++++++++12323111++++++++++++++++++++++',data);
+            // console.log('++++++++12323111++++++++++++++++++++++',data);
             getShopCar(data).then((data) => {
-                console.log(data);
+                // console.log(data);
                 let shopCar = data.data;
                 this.shopCar_length = shopCar.length
 
 
             });
         },
+        nacs(){
+            this.$router.push(`home`)
+        },
+        BEST(){
+            this.$router.push(`MyBest`)
+        },
+        classfiyAddFoot_item(oneSort){
+            this.$bus.$emit('twoClassfiy',this.twoLinked_Data)
+            this.$bus.$emit('oneSortDivShow',this.oneSortDivShow)
+            // console.log('----------------------------bus执行',this.twoLinked_Data,this.oneSortDivShow);
+            this.$router.push(`/onefiy/${oneSort}`)
 
 
+
+
+        }
     },
     created() {
-        this.getShopCar()
-    },
+        },
     mounted() {
-        console.log('123');
+        this.getShopCar()
         this.classfiyAddFoot();
         window.addEventListener('scroll', this.watchScroll);
         this.$bus.$on('shopCarlength', shopCarlength => {
-            console.log('bus执行', shopCarlength);
-
-            this.shopCa_length = shopCarlength
+            // console.log('bus执行', shopCarlength);
+            this.shopCar_length = shopCarlength
         })
     },
     destroyed() {
         // 移除事件监听
         window.removeEventListener("scroll", this.watchScroll);
     },
+    watch:{
+        $route: {
+            deep: true, // 深度
+            handler(to, from) {
+                // console.log("---------------------watch route----------------");
+               this.twofiyAdd()
+
+
+            },
+        },
+    }
 }
 </script>
 <style  scoped lang="less" >
