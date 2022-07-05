@@ -228,7 +228,7 @@ export default {
             getShopCar(data).then((data) => {
                 console.log(data);
                 let shopCar = data.data;
-                this.shopCa_length = shopCar.length
+                this.shopCar_length = shopCar.length
 
 
             });

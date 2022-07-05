@@ -12,19 +12,19 @@
       <div class="footer_content">
         <!-- 左侧信息 -->
         <div class="notice">
-          <a-tabs default-active-key="1" class="tab_head">
-            <a-tab-pane key="1" tab="消息" class="tab_text">
+          <div default-active-key="1" class="tab_head">
+          <div key="1" tab="消息" class="tab_text">
               <ul>
                 <li v-for="(item, index) in notice_one" :key="index">
                   <a href="">{{ item }}</a>
                 </li>
               </ul>
-            </a-tab-pane>
-            <a-tab-pane key="2" tab="活动公告" force-render class="tab_text">
+            </div>
+          <div key="2" tab="活动公告" force-render class="tab_text">
             
-            </a-tab-pane>
-            <a-button slot="tabBarExtraContent"> </a-button>
-          </a-tabs>
+            </div>
+            <button slot="tabBarExtraContent"> </button>
+          </div>
         </div>
         <!-- 右侧联系方式 -->
         <div class="contact">
@@ -36,26 +36,26 @@
           <p class="adress_">2801810010@qq.com</p>
           <p class="button_icon">
             <span
-              ><a-button class="footer_btn">常见问题</a-button>
-              <a-button class="footer_btn">1：1查询</a-button></span
+              ><button class="footer_btn">常见问题</button>
+              <button class="footer_btn">1：1查询</button></span
             >
             <span>
-              <a-icon
+              <div
                 type="facebook"
                 theme="filled"
                 :style="{ fontSize: '32px', width: '41px' }"
               />
-              <a-icon
+              <div
                 type="instagram"
                 theme="filled"
                 :style="{ fontSize: '32px', width: '41px' }"
               />
-              <a-icon
+              <div
                 type="qq-circle"
                 theme="filled"
                 :style="{ fontSize: '32px', width: '41px' }"
               />
-              <a-icon
+              <div
                 type="dingtalk-circle"
                 theme="filled"
                 :style="{
