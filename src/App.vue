@@ -40,7 +40,7 @@ export default {
   methods: {
     gainToken() {
       let gainToken = this.$store.state.user.token;
-      console.log("gainToken", gainToken);
+      // console.log("gainToken", gainToken);
       if (!gainToken) {
         this.show = true;
         this.Navshow = false;

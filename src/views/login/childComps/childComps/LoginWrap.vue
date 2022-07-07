@@ -76,17 +76,17 @@ export default {
         if (valid) {
           alert("submit!");
         } else {
-          console.log("error submit!!");
+          // console.log("error submit!!");
           return false;
         }
       });
-      console.log(formName);
+      // console.log(formName);
       // console.log(this.ruleForm.pass);
       // console.log(this.ruleForm.user);
       let username = this.ruleForm.user;
       let password = this.ruleForm.pass;
       this.$store.dispatch('setUser', { username, password }).then((res) => {
-        console.log('res------------', res);
+        // console.log('res------------', res);
         if (res.code == 200) {
           this.$message({
             message: "登录成功",

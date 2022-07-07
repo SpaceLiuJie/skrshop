@@ -70,11 +70,12 @@ export default {
                 this.oneSortDivShow = oneSortDivShow
                 // console.log('一级数据',this.oneSortDivShow);
                 this.oneSortDivShowHot = [];
-                let randomArr2 = [5, 7, 6, 0, 1, 10, 12, 43, 12, 9,];
+                let randomArr2 = [5, 7, 6, 0, 1, 10, 9, 14, 12, 13,];
                 randomArr2.forEach(key => {
                     // console.log(key);
                     this.oneSortDivShowHot.push(this.oneSortDivShow[key])
                 });
+                // console.log(this.oneSortDivShowHot,"13221231321212112312");
             })
         },
         // twofiyAdd() {
