@@ -246,6 +246,7 @@ export default {
         },
         classfiyAddFoot_item(oneSort){
             this.$bus.$emit('twoClassfiy',this.twoLinked_Data)
+            // console.log(this.oneSortDivShow,'231111=======================');
             this.$bus.$emit('oneSortDivShow',this.oneSortDivShow)
             // console.log('----------------------------bus执行',this.twoLinked_Data,this.oneSortDivShow);
             this.$router.push(`/onefiy/${oneSort}`)

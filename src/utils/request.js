@@ -32,8 +32,8 @@ instance.interceptors.request.use(config => {
 })
 
 instance.interceptors.response.use(response => {
-    console.log('%c服务器响应的数据', 'font-size:14px;color:#000;background-color:greenYellow;padding:5px 15px;')
-    console.log(response.data);
+    // console.log('%c服务器响应的数据', 'font-size:14px;color:#000;background-color:greenYellow;padding:5px 15px;')
+    // console.log(response.data);
     //   setTimeout(() => {
     //     store.dispatch('commitLoading', false)
     //   }, 500);

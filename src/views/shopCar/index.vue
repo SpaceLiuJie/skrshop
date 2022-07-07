@@ -120,7 +120,7 @@ export default {
         //   return;
         // }else{
         //  let b = data.data.map((item) => {
-        console.log(data);
+        // console.log(data);
         if (data.code == 402) {
           return;
         } else {
@@ -129,11 +129,11 @@ export default {
               break;
             } else {
               data.data[i].params = JSON.parse(data.data[i].params);
-              console.log(data.data);
+              // console.log(data.data);
               break;
             }
           }
-          console.log('shopCar数据',data.data);
+          // console.log('shopCar数据',data.data);
           this.shopCar = data.data;
           let shopCarlength = this.shopCar.length
           this.$bus.$emit('shopCarlength',shopCarlength)

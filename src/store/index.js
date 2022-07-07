@@ -31,7 +31,7 @@ let store = new Vuex.Store({
     },
     actions: {
         setUser(store, data) {
-            console.log(data);
+            // console.log(data);
             return login(data).then((data) => {
                 // console.log('login ryn 123');
                 if (data.code == 200) {
@@ -48,7 +48,7 @@ let store = new Vuex.Store({
             // store.commit('SETUSER', data);
         },
         removeuser(store) {
-            console.log('removeuser yun');
+            // console.log('removeuser yun');
             store.commit('REMOVEUSER')
         },
     },
