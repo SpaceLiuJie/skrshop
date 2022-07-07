@@ -1,16 +1,16 @@
 <template>
     <div class="MySwiper" :style="Mystyle">
-        <!-- <swiper ref="MySwiper" :options="MySwiper"> -->
-            <div v-for="(item, index) in imgs" :key="index">
+        <swiper ref="MySwiper" :options="MySwiper">
+            <swiper-slide v-for="(item, index) in imgs" :key="index">
                 <img alt="example" :src="item" />
                 <slot></slot>
-            </div>
+            </swiper-slide>
             <div class="swiper-pagination" slot="pagination" v-show="swiperShow"></div>
             　　
             <div class="swiper-button-prev" slot="button-prev"></div>
             　　
             <div class="swiper-button-next" slot="button-next"></div>
-        <!-- </swiper> -->
+        </swiper>
     </div>
 </template>
 
@@ -37,8 +37,10 @@ export default {
             MySwiper: {
                 slidesPerView: 1,
                 loop: true,
-                observer: true, //修改swiper自己或子元素时，自动初始化swiper
-                observeParents: true, //修改swiper的父元素时，自动初始化swiper
+                observer: true,
+                //修改swiper自己或子元素时，自动初始化swiper
+                observeParents: true,
+                //修改swiper的父元素时，自动初始化swiper
                 autoplay: {
                     delay: 2000,
                     disableOnInteraction: false,
