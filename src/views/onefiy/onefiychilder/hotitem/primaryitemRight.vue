@@ -32,9 +32,9 @@ export default {
         detail() {
             let shop = this.oneSortDivShow;
             this.shop= shop
-            console.log('shop', this.shop);
+            // console.log('shop', this.shop);
             this.totalLength = this.shop.length;
-            console.log(this.totalLength);
+            // console.log(this.totalLength);
             // 价格从高到低的数据
             let TypeOneHeight = [];
             let data = JSON.parse(JSON.stringify(this.shop));
@@ -54,7 +54,7 @@ export default {
 
             // 热销商品截取展示
             this.SortChange_list = [shop, TypeOneLow, TypeOneHeight, TypeOneCount];
-            console.log(this.SortChange_list);
+            // console.log(this.SortChange_list);
         }
     },
     mounted(){
@@ -64,7 +64,7 @@ export default {
          $route: {
             deep: true, // 深度加你太能干
             handler(to, from) {
-                console.log("---------------------watch route----------------");
+                // console.log("---------------------watch route----------------");
                
                 this.detail();
 

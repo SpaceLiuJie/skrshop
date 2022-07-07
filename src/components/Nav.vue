@@ -173,7 +173,7 @@ export default {
                 }
             });
             this.count = 1;
-            console.log('----', this.twoLinked_Data);
+            // console.log('----', this.twoLinked_Data);
             onefiyAddDetail(parent_name).then((data) => {
                 // console.log(data.res);
                 this.oneSortDivShow = data.res;

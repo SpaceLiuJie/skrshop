@@ -58,7 +58,7 @@ export default {
                 // console.log('12133出啊答案是时代大厦', this.twoClassfiy);
                 let randomArr = [2, 7, 6, 0, 1];
                 this.twoClassfiy_hot = [];
-                console.log('randomArr', randomArr);
+                // console.log('randomArr', randomArr);
                 randomArr.forEach(key => {
                     this.twoClassfiy_hot.push(this.twoClassfiy[key])
                 });
