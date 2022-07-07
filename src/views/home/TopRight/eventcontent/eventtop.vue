@@ -1,25 +1,20 @@
 <template>
     <div class="carousel">
-        <div class="content">
-            <el-carousel :interval="5000" arrow="always">
-                <el-carousel-item class="picture" v-for="(src, index) in imgs" :key="index">
-                    <img class="imgbottom" :src="src" alt="">
-                </el-carousel-item>
-            </el-carousel>
-        </div>
         <div class="cent">
-            <div class="txt">
-                <p>10%세일</p>
-                <span>JSNY</span>
-                <span>21SUMMER</span>
-            </div>
-            <div class="cet-img">
-                <ul>
-                    <li v-for="(item, index) in cetImg" :key="index">
-                        <a href=""><img :src="item" alt="" /></a>
-                    </li>
-                </ul>
-            </div>
+            <my-swiper :imgs="imgs" :swiperShow="false">
+                <div class="txt">
+                    <p>10%세일</p>
+                    <span>JSNY</span>
+                    <span>21SUMMER</span>
+                </div>
+                <div class="cet-img">
+                    <ul>
+                        <li v-for="(item, index) in cetImg" :key="index">
+                            <a href=""><img :src="item" alt="" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </my-swiper>
         </div>
     </div>
 </template>
@@ -51,45 +46,29 @@ export default {
 <style lang='less' scoped>
 .carousel {
     position: relative;
-    width: 1145px;
-    margin: 0 auto;
-    top: 10px;
-}
-
-.content {
-    position: relative;
-    width: 1145px;
-    margin: 0 auto;
-    z-index: -1;
-}
-
-.imgbottom {
-    width: 1145px;
-    z-index: -1;
+    width: 100%;
+    // height: 500px;
 }
 
 .cent {
-    position: absolute;
-    width: 1140px;
-    margin: 0 auto;
-    top: 145px;
-    z-index: 1;
+    position: relative;
+    width: 85%;
+    margin: auto;
 }
 
 .txt {
-    position: relative;
-    z-index: 10;
-    width: 1145px;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
     height: 150px;
-    margin: 0 auto;
+    padding: 35px 650px 0px 155px;
     background-color: #ffffffa6;
     font-size: 12px;
     font-family: "yg740";
 
     p {
         font-size: 14px;
-        padding-left: 200px;
-        padding-top: 20px;
         color: #666;
     }
 
@@ -97,14 +76,12 @@ export default {
         display: block;
         margin-top: 3px;
         font-size: 40px;
-        padding-left: 200px;
         color: #000;
     }
 
     span:nth-of-type(2) {
         display: block;
         font-size: 22px;
-        padding-left: 200px;
     }
 }
 
@@ -112,7 +89,7 @@ export default {
     position: absolute;
     bottom: -10px;
     right: 165px;
-    z-index: 10;
+    z-index: 1;
     padding: 10px;
     background-color: #fff;
     width: 457px;
@@ -125,12 +102,10 @@ export default {
         li {
             width: 139px;
             height: 185px;
-            margin-left: 10px;
             list-style: none;
 
             img {
                 width: 100%;
-
             }
         }
     }

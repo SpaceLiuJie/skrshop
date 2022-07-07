@@ -48,14 +48,13 @@ export default {
         },
         getType() {
             onefiyAddDetail("服饰").then(data => {
-                this.all = data.res
+                this.all = data.res.slice(0, 21)
                 onefiyAddDetail("鞋类").then(data => {
-                    this.want = this.all.concat(data.res)
+                    this.want = this.all.concat(data.res.slice(0, 21))
                     onefiyAddDetail("配件").then(data => {
-                        this.wantneed = this.want.concat(data.res)
+                        this.wantneed = this.want.concat(data.res.slice(0, 21))
                         onefiyAddDetail("儿童专区").then(data => {
-                            this.wantneedList = this.wantneed.concat(data.res)
-
+                            this.wantneedList = this.wantneed.concat(data.res.slice(0, 21))
                         })
                     })
                 })
@@ -71,21 +70,20 @@ export default {
             let date = this.btn;
             if (date == "All") {
                 onefiyAddDetail("服饰").then(data => {
-                    this.all = data.res
+                    this.all = data.res.slice(0, 21)
                     onefiyAddDetail("鞋类").then(data => {
-                        this.want = this.all.concat(data.res)
+                        this.want = this.all.concat(data.res.slice(0, 21))
                         onefiyAddDetail("配件").then(data => {
-                            this.wantneed = this.want.concat(data.res)
+                            this.wantneed = this.want.concat(data.res.slice(0, 21))
                             onefiyAddDetail("儿童专区").then(data => {
-                                this.wantneedList = this.wantneed.concat(data.res)
-
+                                this.wantneedList = this.wantneed.concat(data.res.slice(0, 21))
                             })
                         })
                     })
                 })
             }
             onefiyAddDetail(date).then(data => {
-                this.wantneedList = data.res
+                this.wantneedList = data.res.slice(0, 84)
             })
         },
         detail(item) {
@@ -112,7 +110,7 @@ export default {
 #components-pagination-demo-mini {
     width: 150px;
     height: 20px;
-    margin: 10px auto;
+    margin: 20px auto;
 }
 
 .price {
@@ -161,9 +159,9 @@ export default {
 }
 
 .contentNeed {
-    width: 90%;
-    height: 90%;
-    margin: 10px auto;
+    width: 1000px;
+    border: 1px solid rgb(241, 236, 236);
+    margin: 15px auto;
 }
 
 .front {
